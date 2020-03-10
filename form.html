@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <title>Kolya&Polya</title>
+
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="js/slick/slick.css" />
+
+        <meta name="viewport" content="width=device-width" />
+
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    </head>
+
+    <body class="page-form">
+
+        <!-- wrapper -->
+        <div class="wrapper">
+
+            <header>
+                <div class="header-inner">
+                    <div class="header-logo"></div>
+                    <div class="header-tag">#kolyapolya</div>
+                </div>
+            </header>
+
+            <div class="page-form-header"></div>
+
+            <div class="page-form-title">Опрос</div>
+
+            <!-- page form container -->
+            <div class="page-form-container">
+                <form action="#" method="post">
+
+                    <!-- fieldset -->
+                    <div class="fieldset">
+                        <div class="fieldset-title">Ваши данные</div>
+                        <div class="form-input"><span>Имя</span><input type="text" name="name" value="" class="required" /></div>
+                        <div class="form-input"><span>Телефон</span><input type="text" name="phone" value="" class="required phoneRU" /></div>
+                        <div class="fieldset-title">Будете ли на свадьбе?</div>
+
+                        <div class="participate">
+                            <label><input type="radio" name="participate" value="1" id="participate-confirm" class="required" /><span><img src="images/participate-1.svg" alt="" />Конечно буду!</span></label>
+                            <label><input type="radio" name="participate" value="2" class="required" /><span><img src="images/participate-2.svg" alt="" />Пока не знаю</span></label>
+                            <label><input type="radio" name="participate" value="3" class="required" /><span><img src="images/participate-3.svg" alt="" />К сожалению, не смогу</span></label>
+                        </div>
+                    </div>
+                    <!-- fieldset END -->
+
+                    <!-- form detail -->
+                    <div class="form-detail">
+
+                        <div class="fieldset">
+                            <div class="fieldset-title">Помогите нам с подготовкой к свадьбе:</div>
+                            <div class="form-descr">
+                                <ol>
+                                    <li>Добавьте свое фото - хотим познакомить Вас с остальными гостями</li>
+                                    <li>Заполните данные о себе - очень нужно для ведущего (на несколько человек в одном опросе, через +)</li>
+                                    <li>Ответьте на несколько организационных вопросов. Ответы потом можно менять</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="form-info"></div>
+
+                        <div class="form-guest-list"></div>
+
+                        <div class="form-guest-add"><a href="#">Добавить гостя</a></div>
+
+                    </div>
+                    <!-- form detail END -->
+
+                    <div class="btn-send"><button type="submit">Отправить</button></div>
+
+                </form>
+
+                <!-- form template info -->
+                <div class="form-template-info">
+                    <div class="fieldset">
+
+                        <div class="form-avatar" data-link="upload/upload.php">
+                            <div class="form-avatar-inner">
+                                <div class="form-avatar-preview"></div>
+                                <div class="form-avatar-upload"><input name="avatar" type="file" /></div>
+                            </div>
+                        </div>
+
+                        <div class="form-input"><span>Кем приходитесь</span><input type="text" name="whoto" value="" class="required" /></div>
+                        <div class="form-input form-textarea"><span>Про вас</span><textarea rows="5" cols="10" name="about" class="required"></textarea></div>
+
+                        <div class="fieldset-title">Ссылки на соц.сети</div>
+                        <div class="form-input form-input-social"><img src="images/form-social-instagram.svg" /><input type="text" name="social_instagram" value="" placeholder="Instagram" /></div>
+                        <div class="form-input form-input-social"><img src="images/form-social-vk.svg" /><input type="text" name="social_vk" value="" placeholder="Вконтакте" /></div>
+                        <div class="form-input form-input-social"><img src="images/form-social-fb.svg" /><input type="text" name="social_fb" value="" placeholder="Facebook" /></div>
+
+                        <div class="form-sep"></div>
+
+                        <div class="fieldset-title">Предпочтения по меню</div>
+
+                        <div class="form-label">Ваши предпочтения по основному блюду на банкете <span>*наша свадьба будет без мяса</span></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="food1" /><span>Морепродукты</span></label></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="food2" /><span>Рыба</span></label></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="food3" /><span>Вегетарианские блюда</span></label></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="food4" /><span>Веганская замена растительного мяса (beyond meat)</span></label></div>
+                        <div class="form-checkbox-other">
+                            <div class="form-checkbox"><label><input type="checkbox" name="food5" /><span>Свой вариант</span></label></div>
+                            <div class="form-input"><span>Введите блюдо</span><input type="text" name="food_text" value="" /></div>
+                        </div>
+
+                        <div class="form-label-checkbox-other">
+                            <div class="form-label-checkbox">
+                                <div class="form-label">Есть ли у вас аллергия?</div>
+                                <label><input type="checkbox" name="allergy" /><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 6.83161L8.0118 15.0588L16 6.79257V3.01079L11.9847 0L7.97877 1.86893L4.00118 0.00975944L0.0330286 3.03519L0 6.83161Z" /></svg></span></label>
+                            </div>
+                            <div class="form-input"><span>На какой продукт?</span><input type="text" name="allergy_text" value="" /></div>
+                        </div>
+
+                        <div class="form-label-checkbox">
+                            <div class="form-label">Употребляете сахар?</div>
+                            <label><input type="checkbox" name="sugar" /><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 6.83161L8.0118 15.0588L16 6.79257V3.01079L11.9847 0L7.97877 1.86893L4.00118 0.00975944L0.0330286 3.03519L0 6.83161Z" /></svg></span></label>
+                        </div>
+
+                        <div class="form-label">Ваши предпочтения по алкогольным напиткам <span>*наша свадьба будет без мяса</span></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="alcohol1" /><span>Шампанское</span></label></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="alcohol2" /><span>Вино белое</span></label></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="alcohol3" /><span>Вино красное</span></label></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="alcohol4" /><span>Виски</span></label></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="alcohol5" /><span>Ром</span></label></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="alcohol6" /><span>Коктейли</span></label></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="alcohol7" /><span>Пиво</span></label></div>
+                        <div class="form-checkbox-other">
+                            <div class="form-checkbox"><label><input type="checkbox" name="alcohol8" /><span>Другое</span></label></div>
+                            <div class="form-input"><span>Введите напиток</span><input type="text" name="alcohol_text" value="" /></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- form template info END -->
+
+                <!-- form template guest -->
+                <div class="form-template-guest">
+                    <div class="fieldset">
+
+                        <div class="fieldset-title guest-number">Гость</div>
+
+                        <div class="form-label-checkbox form-label-checkbox-child">
+                            <div class="form-label">Взрослый</div>
+                            <label><input type="checkbox" name="child" /><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 6.83161L8.0118 15.0588L16 6.79257V3.01079L11.9847 0L7.97877 1.86893L4.00118 0.00975944L0.0330286 3.03519L0 6.83161Z" /></svg></span></label>
+                            <div class="form-label">Ребенок <span>*для детей будет отдельная программа</span></div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <div class="form-input"><span>Имя</span><input type="text" name="name" value="" class="required" /></div>
+                            </div>
+                            <div class="form-field">
+                                <div class="form-input"><span>Возраст</span><input type="text" name="age" value="" class="required" /></div>
+                            </div>
+                        </div>
+
+                        <div class="form-sep"></div>
+
+                        <div class="fieldset-title">Предпочтения по меню</div>
+
+                        <div class="form-label">Ваши предпочтения по основному блюду на банкете <span>*наша свадьба будет без мяса</span></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="food1" /><span>Морепродукты</span></label></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="food2" /><span>Рыба</span></label></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="food3" /><span>Вегетарианские блюда</span></label></div>
+                        <div class="form-checkbox"><label><input type="checkbox" name="food4" /><span>Веганская замена растительного мяса (beyond meat)</span></label></div>
+                        <div class="form-checkbox-other">
+                            <div class="form-checkbox"><label><input type="checkbox" name="food5" /><span>Свой вариант</span></label></div>
+                            <div class="form-input"><span>Введите блюдо</span><input type="text" name="food_text" value="" /></div>
+                        </div>
+
+                        <div class="form-label-checkbox-other">
+                            <div class="form-label-checkbox">
+                                <div class="form-label">Есть ли у вас аллергия?</div>
+                                <label><input type="checkbox" name="allergy" /><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 6.83161L8.0118 15.0588L16 6.79257V3.01079L11.9847 0L7.97877 1.86893L4.00118 0.00975944L0.0330286 3.03519L0 6.83161Z" /></svg></span></label>
+                            </div>
+                            <div class="form-input"><span>На какой продукт?</span><input type="text" name="allergy_text" value="" /></div>
+                        </div>
+
+                        <div class="form-label-checkbox">
+                            <div class="form-label">Употребляете сахар?</div>
+                            <label><input type="checkbox" name="sugar" /><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 6.83161L8.0118 15.0588L16 6.79257V3.01079L11.9847 0L7.97877 1.86893L4.00118 0.00975944L0.0330286 3.03519L0 6.83161Z" /></svg></span></label>
+                        </div>
+
+                        <div class="form-child-alcohol">
+                            <div class="form-label">Ваши предпочтения по алкогольным напиткам <span>*наша свадьба будет без мяса</span></div>
+                            <div class="form-checkbox"><label><input type="checkbox" name="alcohol1" /><span>Шампанское</span></label></div>
+                            <div class="form-checkbox"><label><input type="checkbox" name="alcohol2" /><span>Вино белое</span></label></div>
+                            <div class="form-checkbox"><label><input type="checkbox" name="alcohol3" /><span>Вино красное</span></label></div>
+                            <div class="form-checkbox"><label><input type="checkbox" name="alcohol4" /><span>Виски</span></label></div>
+                            <div class="form-checkbox"><label><input type="checkbox" name="alcohol5" /><span>Ром</span></label></div>
+                            <div class="form-checkbox"><label><input type="checkbox" name="alcohol6" /><span>Коктейли</span></label></div>
+                            <div class="form-checkbox"><label><input type="checkbox" name="alcohol7" /><span>Пиво</span></label></div>
+                            <div class="form-checkbox-other">
+                                <div class="form-checkbox"><label><input type="checkbox" name="alcohol8" /><span>Другое</span></label></div>
+                                <div class="form-input"><span>Введите напиток</span><input type="text" name="alcohol_text" value="" /></div>
+                            </div>
+                        </div>
+
+                        <a href="#" class="guest-remove"><svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.588314 8.64457C0.509582 8.56648 0.447091 8.47358 0.404446 8.37121C0.3618 8.26885 0.339844 8.15906 0.339844 8.04817C0.339844 7.93728 0.3618 7.82749 0.404446 7.72513C0.447091 7.62276 0.509582 7.52986 0.588314 7.45177L7.71991 0.32857C7.88254 0.208364 8.08307 0.15086 8.28468 0.166618C8.48629 0.182376 8.67545 0.270338 8.81742 0.414352C8.95939 0.558365 9.04464 0.748762 9.05752 0.950578C9.07039 1.15239 9.01003 1.35208 8.88751 1.51297L1.78111 8.64457C1.70303 8.7233 1.61012 8.78579 1.50776 8.82844C1.4054 8.87109 1.2956 8.89304 1.18471 8.89304C1.07382 8.89304 0.964032 8.87109 0.86167 8.82844C0.759308 8.78579 0.666403 8.7233 0.588314 8.64457Z" /><path d="M0.244266 0.244266C0.401651 0.0878153 0.61455 0 0.836466 0C1.05838 0 1.27128 0.0878153 1.42867 0.244266L8.56027 7.36747C8.71844 7.52564 8.8073 7.74017 8.8073 7.96387C8.8073 8.18756 8.71844 8.40209 8.56027 8.56027C8.40209 8.71844 8.18756 8.8073 7.96387 8.8073C7.74017 8.8073 7.52564 8.71844 7.36747 8.56027L0.244266 1.42867C0.0878153 1.27128 0 1.05838 0 0.836466C0 0.61455 0.0878153 0.401651 0.244266 0.244266Z" /></svg></a>
+                    </div>
+                </div>
+                <!-- form guest info -->
+
+            </div>
+            <!-- page form container END -->
+
+            <div class="footer">
+                <div class="footer-menu">
+                    <a href="index.html#welcome"><span>Что? Где? Когда?</span></a>
+                    <a href="index.html#location"><span>На неведомых дорожках</span></a>
+                    <a href="index.html#aperitive"><span>Апперетив</span></a>
+                    <a href="index.html#checkin"><span>Чекин</span></a>
+                    <a href="index.html#when"><span>Когда начинаем?</span></a>
+                    <a href="index.html#scheme"><span>План сокровищ</span></a>
+                    <a href="index.html#programs"><span>План эвакуации</span></a>
+                    <a href="index.html#poll"><span>Твой голос важен...</span></a>
+                    <a href="index.html#places"><span>Простите, а вы кто?</span></a>
+                    <a href="index.html#guests"><span>Коллектив</span></a>
+                    <a href="index.html#wishes"><span>Очень хотелось, но нет...</span></a>
+                    <a href="index.html#team"><span>Добрые феи</span></a>
+                    <a href="index.html#contacts"><span>Спортлото</span></a>
+                    <a href="index.html#gallery"><span>Как молоды мы были..</span></a>
+                    <a href="index.html#profile"><span>Зеркало</span></a>
+                </div>
+
+                <div class="footer-logo"></div>
+                <div class="footer-date">23.05.2020</div>
+            </div>
+
+        </div>
+        <!-- wrapper END -->
+
+        <script>
+            var pathTemplate = './';
+        </script>
+        <script src="js/fonts.js"></script>
+
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/slick/slick.min.js"></script>
+        <script src="js/jquery.mask.min.js"></script>
+        <script src="js/validation/jquery.validate.min.js"></script>
+        <script src="js/validation/messages_ru.js"></script>
+        <script src="js/tools.js"></script>
+
+    </body>
+</html>
