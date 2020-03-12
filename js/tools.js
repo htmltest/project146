@@ -512,6 +512,33 @@ function initForm(curForm) {
     });
 
     curForm.validate({
-        ignore: ''
+        ignore: '',
+        invalidHandler: function(event, validator) {
+            var curForm = $(this);
+            curForm.find('.form-checkbox-group').each(function() {
+                var curGroup = $(this);
+                curGroup.find('> label.error').remove();
+                if (!curGroup.parent().hasClass('invisible') && curGroup.find('.form-checkbox input:checked').length == 0) {
+                    curGroup.prepend('<label class="error">Нужно выбрать хотя бы один вариант</label>')
+                }
+            });
+        },
+        submitHandler: function(form) {
+            var groupCheck = true;
+            var curForm = $(form);
+            curForm.find('.form-checkbox-group').each(function() {
+                var curGroup = $(this);
+                curGroup.find('> label.error').remove();
+                if (!curGroup.parent().hasClass('invisible') && curGroup.find('.form-checkbox input:checked').length == 0) {
+                    groupCheck = false;
+                    curGroup.prepend('<label class="error">Нужно выбрать хотя бы один вариант</label>')
+                }
+            });
+            if (groupCheck) {
+                form.submit();
+            } else {
+                $('html, body').animate({'scrollTop': $('.form-checkbox-group > label.error').eq(0).offset().top - 100});
+            }
+        }
     });
 }
