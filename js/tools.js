@@ -107,42 +107,58 @@ $(document).ready(function() {
     });
 
     $('body').on('mouseover', '.places-scheme-table-window-item', function(e) {
+        var curTable = $(this).parents().filter('.places-scheme-table');
         var curWindow = $(this).parents().filter('.places-scheme-table-window');
         curWindow.find('.places-scheme-table-window-detail').html($(this).find('.places-scheme-table-window-item-detail').html());
         curWindow.find('.places-scheme-table-window-item.hover').removeClass('hover');
-        $('.places-scheme-place.hover').removeClass('hover');
+        $('.places-scheme-table-place.hover').removeClass('hover');
         $(this).addClass('hover');
         var curID = $(this).attr('data-id');
-        $('.places-scheme-place[data-id="' + curID + '"]').addClass('hover');
+        curTable.find('.places-scheme-table-place[data-id="' + curID + '"]').addClass('hover');
+    });
+
+    $('body').on('mouseover', '.places-scheme-table-place', function(e) {
+        var curPlace = $(this);
+        var curTable = curPlace.parents().filter('.places-scheme-table');
+        var curWindow = curTable.find('.places-scheme-table-window');
+        var curID = curPlace.attr('data-id');
+        var curItem = curWindow.find('.places-scheme-table-window-item[data-id="' + curID + '"]');
+        curWindow.find('.places-scheme-table-window-detail').html(curItem.find('.places-scheme-table-window-item-detail').html());
+        curWindow.find('.places-scheme-table-window-item.hover').removeClass('hover');
+        $('.places-scheme-table-place.hover').removeClass('hover');
+        curItem.addClass('hover');
+        curTable.find('.places-scheme-table-place[data-id="' + curID + '"]').addClass('hover');
     });
 
     $('body').on('mouseover', '.places-scheme-table', function(e) {
+        var curTable = $(this);
         var curWindow = $(this).find('.places-scheme-table-window');
         if (curWindow.find('.places-scheme-table-window-item.hover').length == 0) {
             curWindow.find('.places-scheme-table-window-item').eq(0).each(function() {
                 $(this).addClass('hover');
                 var curID = $(this).attr('data-id');
-                $('.places-scheme-place[data-id="' + curID + '"]').addClass('hover');
+                curTable.find('.places-scheme-table-place[data-id="' + curID + '"]').addClass('hover');
                 curWindow.find('.places-scheme-table-window-detail').html($(this).find('.places-scheme-table-window-item-detail').html());
             });
         } else {
             curWindow.find('.places-scheme-table-window-item.hover').each(function() {
                 var curID = $(this).attr('data-id');
-                $('.places-scheme-place[data-id="' + curID + '"]').addClass('hover');
+                curTable.find('.places-scheme-table-place[data-id="' + curID + '"]').addClass('hover');
             });
         }
     });
 
     $('body').on('mouseout', '.places-scheme-table', function(e) {
-        $('.places-scheme-place.hover').removeClass('hover');
+        $('.places-scheme-table-place.hover').removeClass('hover');
     });
 
-    $('.places-scheme').each(function() {
+    $('.places-scheme-table').each(function() {
+        var curTable = $(this);
         var curID = 0;
-        $('.places-scheme-table-window-item').each(function() {
+        curTable.find('.places-scheme-table-window-item').each(function() {
             var curItem = $(this);
             curItem.attr('data-id', curID);
-            $('.places-scheme-places').append('<div class="places-scheme-place" data-id="' + curID + '" style="left:' + curItem.attr('data-left') + 'px; top:' + curItem.attr('data-top') + 'px"></div>');
+            curTable.find('.places-scheme-table-places').append('<div class="places-scheme-table-place" data-id="' + curID + '" style="left:' + curItem.attr('data-left') + 'px; top:' + curItem.attr('data-top') + 'px"></div>');
             curID++;
         });
     });
@@ -162,7 +178,7 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('.footer-menu a, .confirm-link').click(function(e) {
+    $('.nav-list a, .footer-menu a, .confirm-link').click(function(e) {
         var curBlock = $($(this).attr('href'));
         if (curBlock.length == 1) {
             $('html, body').animate({'scrollTop': curBlock.offset().top});
@@ -223,8 +239,10 @@ $(document).ready(function() {
         var curInput = $(this);
         if (curInput.prop('checked')) {
             curInput.parents().filter('.form-checkbox-other').addClass('checked');
+            curInput.parents().filter('.form-checkbox-other').find('.form-input input').addClass('required');
         } else {
             curInput.parents().filter('.form-checkbox-other').removeClass('checked');
+            curInput.parents().filter('.form-checkbox-other').find('.form-input input').removeClass('required');
         }
     });
 
@@ -232,8 +250,10 @@ $(document).ready(function() {
         var curInput = $(this);
         if (curInput.prop('checked')) {
             curInput.parents().filter('.form-label-checkbox-other').addClass('checked');
+            curInput.parents().filter('.form-label-checkbox-other').find('.form-input input').addClass('required');
         } else {
             curInput.parents().filter('.form-label-checkbox-other').removeClass('checked');
+            curInput.parents().filter('.form-label-checkbox-other').find('.form-input input').removeClass('required');
         }
     });
 
@@ -249,9 +269,16 @@ $(document).ready(function() {
             processData: false,
             dataType: 'json',
             success: function(data) {
+                $('.form-avatar-upload label.error').remove();
                 if (data.status == 'success') {
                     $('.form-avatar-preview').css({'background-image': 'url(' + data.path + ')'});
+                } else {
+                    $('.form-avatar-upload').append('<label class="error">Ошибка загрузки</label>');
                 }
+            },
+            error: function() {
+                $('.form-avatar-upload label.error').remove();
+                $('.form-avatar-upload').append('<label class="error">Ошибка загрузки</label>');
             }
         });
     });
@@ -271,16 +298,30 @@ $(document).ready(function() {
         var curGuest = curInput.parents().filter('.form-guest-item')
         if (curInput.prop('checked')) {
             curGuest.find('.form-child-alcohol').addClass('invisible');
+            curGuest.find('.form-child-alcohol .form-checkbox-other .form-checkbox input').prop('checked', false).trigger('change');
         } else {
             curGuest.find('.form-child-alcohol').removeClass('invisible');
         }
     });
 
+    $('body').on('change', '.form-guest-item input', function(e) {
+        var curItem = $(this).parents().filter('.form-guest-item');
+        curItem.addClass('changed');
+    });
+
     $('body').on('click', '.form-guest-item .guest-remove', function(e) {
         var curItem = $(this).parents().filter('.form-guest-item');
-        curItem.fadeOut(function() {
-            curItem.remove();
-        });
+        if (curItem.hasClass('changed')) {
+            if (confirm('Удалить гостя')) {
+                curItem.fadeOut(function() {
+                    curItem.remove();
+                });
+            }
+        } else {
+            curItem.fadeOut(function() {
+                curItem.remove();
+            });
+        }
         e.preventDefault();
     });
 
@@ -292,6 +333,88 @@ $(document).ready(function() {
             $('.gallery-tab.active').removeClass('active');
             var curIndex = $('.gallery-menu ul li').index(curLi);
             $('.gallery-tab').eq(curIndex).addClass('active');
+        }
+        e.preventDefault();
+    });
+
+    $.extend(true, $.magnificPopup.defaults, {
+        tClose: 'Закрыть (Esc)',
+        tLoading: 'Загрузка...',
+        gallery: {
+            tPrev: 'Предыдущая',
+            tNext: 'Следующая',
+            tCounter: '%curr% из %total%'
+        },
+        image: {
+            tError: '<a href="%url%">Изображение</a> не может быть загружено.'
+        },
+        ajax: {
+            tError: '<a href="%url%">Контент</a> не может быть загружен.'
+        }
+    });
+
+    $('.gallery-list').each(function() {
+        $(this).find('.gallery-item-zoom').magnificPopup({
+            type: 'image',
+            gallery: {
+                enabled: true
+            }
+        });
+    });
+
+    $('.header-menu-link').click(function(e) {
+        $('html').addClass('menu-open');
+        e.preventDefault();
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.nav').length == 0 && $(e.target).parents().filter('.header-menu-link').length == 0 && !$(e.target).hasClass('header-menu-link')) {
+            $('html').removeClass('menu-open');
+        }
+    });
+
+    $('.nav-header-menu-link').click(function(e) {
+        $('html').removeClass('menu-open');
+        e.preventDefault();
+    });
+
+    $('.nav-container').mCustomScrollbar({
+        axis: 'y',
+        scrollButtons: {
+            enable: true
+        }
+    });
+
+    var clipboard = new ClipboardJS('.location-coords span');
+    clipboard.on('success', function(e) {
+        alert('Координаты скопированы в буфер');
+    });
+
+    $('.location-routes a').click(function(e) {
+        $('.location').toggleClass('location-routes-enable');
+        if ($('.location').hasClass('location-routes-enable')) {
+            if (myMap !== undefined) {
+                myMap.controls.add('routePanelControl', {float: 'right'});
+
+                var control = myMap.controls.get('routePanelControl');
+
+                control.routePanel.state.set({
+                    type: 'masstransit',
+                    fromEnabled: true,
+                    to: coords,
+                    toEnabled: false
+                });
+
+                control.routePanel.options.set({
+                    allowSwitch: false,
+                    reverseGeocoding: true,
+                    types: { driving: true, masstransit: true, pedestrian: true, taxi: true }
+                });
+            }
+        } else {
+            if (myMap !== undefined) {
+                myMap.controls.remove('routePanelControl');
+            }
         }
         e.preventDefault();
     });
@@ -343,6 +466,32 @@ $(window).on('load resize scroll', function() {
     } else {
         $('.up-link').removeClass('visible');
     }
+
+    if (curScroll + $(window).height() > $('.footer').offset().top) {
+        $('.up-link').css({'margin-bottom': (curScroll + $(window).height()) - $('.footer').offset().top});
+    } else {
+        $('.up-link').css({'margin-bottom': 0});
+    }
+
+    $('.nav-list a').each(function() {
+        var curBlock = $($(this).attr('href'));
+        if (curBlock.length == 1) {
+            if ((curScroll + $(window).height() / 2) > curBlock.offset().top) {
+                $('.nav-list li.active').removeClass('active');
+                $(this).parent().addClass('active');
+            }
+        }
+    });
+
+    $('.animate').each(function() {
+        var curBlock = $(this);
+        if ((curScroll + $(window).height()) > curBlock.offset().top) {
+            curBlock.addClass('animate-start');
+        } else {
+            curBlock.removeClass('animate-start');
+        }
+    });
+
 });
 
 function initForm(curForm) {
