@@ -18,7 +18,16 @@ $(document).ready(function() {
         prevArrow: '<button type="button" class="slick-prev"></button>',
         nextArrow: '<button type="button" class="slick-next"></button>',
         dots: false,
-        adaptiveHeight: true
+        adaptiveHeight: true,
+        responsive: [
+            {
+                breakpoint: 1159,
+                settings: {
+                    arrows: false,
+                    dots: true
+                }
+            }
+        ]
     });
 
     $('body').on('click', '.aperitive-video-link', function(e) {
@@ -169,7 +178,18 @@ $(document).ready(function() {
         slidesToScroll: 3,
         prevArrow: '<button type="button" class="slick-prev"></button>',
         nextArrow: '<button type="button" class="slick-next"></button>',
-        dots: false
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 1159,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    arrows: false,
+                    dots: true
+                }
+            }
+        ]
     });
 
     $('.guests-more-link a').click(function(e) {
@@ -269,16 +289,17 @@ $(document).ready(function() {
             processData: false,
             dataType: 'json',
             success: function(data) {
+                $('.form-avatar-inner label.error-text').remove();
                 $('.form-avatar-upload label.error').remove();
                 if (data.status == 'success') {
                     $('.form-avatar-preview').css({'background-image': 'url(' + data.path + ')'});
                 } else {
-                    $('.form-avatar-upload').append('<label class="error">Ошибка загрузки</label>');
+                    $('.form-avatar-inner').append('<label class="error-text">Ошибка загрузки</label>');
                 }
             },
             error: function() {
-                $('.form-avatar-upload label.error').remove();
-                $('.form-avatar-upload').append('<label class="error">Ошибка загрузки</label>');
+                $('.form-avatar-inner label.error-text').remove();
+                $('.form-avatar-inner').append('<label class="error-text">Ошибка загрузки</label>');
             }
         });
     });
@@ -333,6 +354,9 @@ $(document).ready(function() {
             $('.gallery-tab.active').removeClass('active');
             var curIndex = $('.gallery-menu ul li').index(curLi);
             $('.gallery-tab').eq(curIndex).addClass('active');
+            if ($('.gallery-menu ul').hasClass('slick-slider')) {
+                $('.gallery-menu ul').slick('slickGoTo', curIndex - 1);
+            }
         }
         e.preventDefault();
     });
@@ -522,6 +546,12 @@ function initForm(curForm) {
                     curGroup.prepend('<label class="error">Нужно выбрать хотя бы один вариант</label>')
                 }
             });
+            validator.showErrors();
+            curForm.find('.form-avatar-inner label.error-text').remove();
+            curForm.find('.form-avatar-upload label.error').each(function() {
+                curForm.find('.form-avatar-inner').append('<label class="error-text">' + curForm.find('.form-avatar-upload label.error').html() + '</label>');
+            });
+            curForm.find('.form-avatar-upload label.error').remove();
         },
         submitHandler: function(form) {
             var groupCheck = true;
@@ -542,3 +572,36 @@ function initForm(curForm) {
         }
     });
 }
+
+$(window).on('load resize', function() {
+    if ($(window).width() > 1159) {
+        $('.scheme-content').mCustomScrollbar('destroy');
+        $('.places-scheme-wrap').mCustomScrollbar('destroy');
+        $('.gallery-menu ul').each(function() {
+            var curList = $(this);
+            if (curList.hasClass('slick-slider')) {
+                curList.slick('unslick');
+            }
+        });
+    } else {
+        $('.scheme-content').mCustomScrollbar({
+            axis: 'x'
+        });
+        $('.places-scheme-wrap').mCustomScrollbar({
+            axis: 'x'
+        });
+        $('.gallery-menu ul').each(function() {
+            var curList = $(this);
+            if (!curList.hasClass('slick-slider')) {
+                curList.slick({
+                    infinite: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    variableWidth: true,
+                    dots: false
+                });
+            }
+        });
+    }
+});

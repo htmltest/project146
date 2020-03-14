@@ -33,6 +33,9 @@
             <!-- nav -->
             <div class="nav">
                 <div class="nav-header">
+                    <div class="nav-header-logo"></div>
+                    <div class="nav-header-tag">#kolyapolya</div>
+
                     <a href="#" class="nav-header-menu-link"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1.48871" y="0.237305" width="20" height="2.10526" rx="1" transform="rotate(45 1.48871 0.237305)" /><rect x="15.6308" y="1.72607" width="20" height="2.10526" rx="1" transform="rotate(135 15.6308 1.72607)" /></svg></a>
                     <a href="#" class="nav-header-user-link"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.0004 10.1629C5.2548 10.1629 3.0188 7.92691 3.0188 5.18131C3.0188 2.43571 5.2548 0.199707 8.0004 0.199707C10.746 0.199707 12.982 2.43571 12.982 5.18131C12.982 7.92691 10.746 10.1629 8.0004 10.1629ZM8.0004 1.61931C6.04 1.61931 4.4436 3.21571 4.4436 5.17611C4.4436 7.13651 6.04 8.73291 8.0004 8.73291C9.9608 8.73291 11.5572 7.13651 11.5572 5.17611C11.5572 3.21571 9.9608 1.61931 8.0004 1.61931Z" /><path d="M15.1189 15.8571H13.6941C13.6941 12.7163 11.1409 10.1631 8.00015 10.1631C4.85935 10.1631 2.30615 12.7163 2.30615 15.8571H0.881348C0.881348 11.9311 4.07415 8.73828 8.00015 8.73828C11.9261 8.73828 15.1189 11.9311 15.1189 15.8571Z" /></svg></a>
                 </div>
@@ -104,6 +107,8 @@
 
             <!-- location -->
             <div class="location" id="location">
+                <div class="location-map" id="map"></div>
+
                 <div class="location-content">
                     <div class="location-container">
                         <div class="location-inner">
@@ -126,7 +131,6 @@
                     </div>
                 </div>
 
-                <div class="location-map" id="map"></div>
                 <script async src="https://api-maps.yandex.ru/2.1/?apikey=e57c585d-ec7d-41bf-af46-c8d197dc63c8&load=package.full&lang=ru-RU&onload=getYandexMap"></script>
                 <script>
 
@@ -152,8 +156,13 @@
                         myMap.geoObjects.add(myPlacemark);
                         myMap.setCenter(coords);
 
-                        var position = myMap.getGlobalPixelCenter();
-                        myMap.setGlobalPixelCenter([position[0] - 180, position[1]]);
+                        var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                        if (w > 1159) {
+                            var position = myMap.getGlobalPixelCenter();
+                            myMap.setGlobalPixelCenter([position[0] - 180, position[1]]);
+                        } else {
+                            myMap.behaviors.disable('drag');
+                        }
                     }
                 </script>
 
@@ -330,72 +339,72 @@
 
                         <div class="scheme-content">
                             <div class="scheme-content-map">
-                                <svg width="531" height="468" viewBox="0 0 531 468" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <image width="531" height="468" xlink:href="images/plan.png" />
-                                    <path class="scheme-content-map-area" data-id="1" d="M330 31L366.5 9L404 66L365 88.5L355 71L348 74.5L332.5 47L337.5 44L330 31Z" />
-                                    <path class="scheme-content-map-area" data-id="2" d="M329.5 82.5L344 74.5L359.5 98L344 107L329.5 82.5Z" />
-                                    <path class="scheme-content-map-area" data-id="3" d="M230 322L257.5 305.5L276.5 333L247 347.5L230 322Z" />
-                                    <path class="scheme-content-map-area" data-id="4" d="M198.5 350L213.5 326.5H233L247.5 348L237.5 368L213.5 369.5L198.5 350Z" />
-                                    <path class="scheme-content-map-area" data-id="5" d="M253.5 447.5L271.5 419L288 429.5L269.5 457.5L253.5 447.5Z" />
-                                    <path class="scheme-content-map-area" data-id="6" d="M325 166H353V192H325V166Z" />
-                                    <path class="scheme-content-map-area" data-id="7" d="M10 353L41 337L98 408V458L54 469L10 353Z" />
-                                    <path class="scheme-content-map-area" data-id="8" d="M259 236L323.5 190.5V193.5H354V176.5L360.5 179L433.5 265.5L435.5 269L437 272L435.5 276L433 280L374.5 314L311 332.5L264.5 296L259 236Z" />
+                                <svg width="531" height="469" viewBox="0 0 531 469" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <image width="531" height="469" xlink:href="images/plan.png" />
+                                    <path class="scheme-content-map-area" data-id="1" d="M331 31L365.5 10.5L401 65.5L364.5 85.5L354 70L348 73L333.5 47.5L338.5 44.5L331 31Z" />
+                                    <path class="scheme-content-map-area" data-id="2" d="M330.5 83L342.5 76L357 98L344.5 105.5L330.5 83Z" />
+                                    <path class="scheme-content-map-area" data-id="3" d="M220.5 312L262.5 285L292 328L249 353L220.5 312Z" />
+                                    <path class="scheme-content-map-area" data-id="4" d="M191 320L223.5 322L245.5 354L230 387.5L191 389.5L168.5 358.5L191 320Z" />
+                                    <path class="scheme-content-map-area" data-id="5" d="M271 420.5L287 429.5L269.5 457L253 448L271 420.5Z" />
+                                    <path class="scheme-content-map-area" data-id="6" d="M325 167H352V174V192H325V167Z" />
+                                    <path class="scheme-content-map-area" data-id="7" d="M9 353.5L39.5 337.5L97 409V458L54 469L9 353.5Z" />
+                                    <path class="scheme-content-map-area" data-id="8" d="M258.5 237L322.5 191V194H355L354.5 178L359.5 179.5L434.5 268L436 272L435.5 276L430 281L374 314L310.5 332.5L283.5 311L278 303.5L263 282.5L258.5 237Z" />
                                 </svg>
                                 <div class="scheme-content-points">
-                                    <div class="scheme-content-point" data-id="1" style="left:362px; top:45px">
+                                    <div class="scheme-content-point" data-id="1" style="left:361px; top:44px">
                                         <div class="scheme-content-point-icon">1</div>
                                         <div class="scheme-content-point-popup">
                                             <div class="scheme-content-point-popup-number">1</div>
-                                            <div class="scheme-content-point-popup-title">Парковка (лезгиночная)</div>
+                                            <div class="scheme-content-point-popup-title">Парковка</div>
                                         </div>
                                     </div>
                                     <div class="scheme-content-point" data-id="2" style="left:344px; top:91px">
                                         <div class="scheme-content-point-icon">2</div>
                                         <div class="scheme-content-point-popup">
                                             <div class="scheme-content-point-popup-number">2</div>
-                                            <div class="scheme-content-point-popup-title">Туалет (Сортирная)</div>
+                                            <div class="scheme-content-point-popup-title">Туалет</div>
                                         </div>
                                     </div>
-                                    <div class="scheme-content-point" data-id="3" style="left:252px; top:326px">
+                                    <div class="scheme-content-point" data-id="3" style="left:255px; top:319px">
                                         <div class="scheme-content-point-icon">3</div>
                                         <div class="scheme-content-point-popup">
                                             <div class="scheme-content-point-popup-number">3</div>
-                                            <div class="scheme-content-point-popup-title">Терраса (курительная)</div>
+                                            <div class="scheme-content-point-popup-title">Терраса</div>
                                         </div>
                                     </div>
-                                    <div class="scheme-content-point" data-id="4" style="left:223px; top:348px">
+                                    <div class="scheme-content-point" data-id="4" style="left:190px; top:345px">
                                         <div class="scheme-content-point-icon">4</div>
                                         <div class="scheme-content-point-popup">
                                             <div class="scheme-content-point-popup-number">4</div>
-                                            <div class="scheme-content-point-popup-title">Шатер (пыточная)</div>
+                                            <div class="scheme-content-point-popup-title">Шатер</div>
                                         </div>
                                     </div>
-                                    <div class="scheme-content-point" data-id="5" style="left:269px; top:431px">
+                                    <div class="scheme-content-point" data-id="5" style="left:270px; top:438px">
                                         <div class="scheme-content-point-icon">5</div>
                                         <div class="scheme-content-point-popup">
                                             <div class="scheme-content-point-popup-number">5</div>
-                                            <div class="scheme-content-point-popup-title">Церемония (клятвенная)</div>
+                                            <div class="scheme-content-point-popup-title">Церемония</div>
                                         </div>
                                     </div>
                                     <div class="scheme-content-point" data-id="6" style="left:338px; top:178px">
                                         <div class="scheme-content-point-icon">6</div>
                                         <div class="scheme-content-point-popup">
                                             <div class="scheme-content-point-popup-number">6</div>
-                                            <div class="scheme-content-point-popup-title">Кинотеатр (Залипательная)</div>
+                                            <div class="scheme-content-point-popup-title">Кинотеатр</div>
                                         </div>
                                     </div>
-                                    <div class="scheme-content-point" data-id="7" style="left:63px; top:393px">
+                                    <div class="scheme-content-point" data-id="7" style="left:59px; top:406px">
                                         <div class="scheme-content-point-icon">7</div>
                                         <div class="scheme-content-point-popup">
                                             <div class="scheme-content-point-popup-number">7</div>
-                                            <div class="scheme-content-point-popup-title">Детская площадка (Бесительная)</div>
+                                            <div class="scheme-content-point-popup-title">Детская площадка</div>
                                         </div>
                                     </div>
-                                    <div class="scheme-content-point" data-id="8" style="left:332px; top:249px">
+                                    <div class="scheme-content-point" data-id="8" style="left:333px; top:247px">
                                         <div class="scheme-content-point-icon">8</div>
                                         <div class="scheme-content-point-popup">
                                             <div class="scheme-content-point-popup-number">8</div>
-                                            <div class="scheme-content-point-popup-title">Пруд (вытрезвительная)</div>
+                                            <div class="scheme-content-point-popup-title">Пруд</div>
                                         </div>
                                     </div>
                                 </div>
@@ -596,760 +605,762 @@
                     <div class="section-title animate">Простите, а вы кто</div>
                     <div class="section-subtitle animate">Схема столов</div>
 
-                    <div class="places-scheme animate">
-                        <img src="images/places-scheme.png" alt="" class="places-scheme-back" />
+                    <div class="places-scheme-wrap">
+                        <div class="places-scheme animate">
+                            <img src="images/places-scheme.png" alt="" class="places-scheme-back" />
 
-                        <!-- places scheme table -->
-                        <div class="places-scheme-table places-scheme-table-bottom" style="left:829.5px; top:200.5px">
-                            <div class="places-scheme-table-area"></div>
-                            <div class="places-scheme-table-icon">1</div>
-                            <div class="places-scheme-table-places"></div>
-                            <div class="places-scheme-table-window">
-                                <div class="places-scheme-table-window-title">Стол №1</div>
-                                <div class="places-scheme-table-window-list">
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="24">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                            <!-- places scheme table -->
+                            <div class="places-scheme-table places-scheme-table-bottom" style="left:829.5px; top:200.5px">
+                                <div class="places-scheme-table-area"></div>
+                                <div class="places-scheme-table-icon">1</div>
+                                <div class="places-scheme-table-places"></div>
+                                <div class="places-scheme-table-window">
+                                    <div class="places-scheme-table-window-title">Стол №1</div>
+                                    <div class="places-scheme-table-window-list">
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="24">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-65" data-top="-5">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-35" data-top="-55">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-6" data-top="-63">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="23" data-top="-56">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="45" data-top="-34">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="53" data-top="-5">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="45" data-top="25">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-65" data-top="-5">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-35" data-top="-55">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-6" data-top="-63">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="23" data-top="-56">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="45" data-top="-34">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="53" data-top="-5">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="45" data-top="25">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
+                                    <div class="places-scheme-table-window-detail"></div>
                                 </div>
-                                <div class="places-scheme-table-window-detail"></div>
                             </div>
-                        </div>
-                        <!-- places scheme table END -->
+                            <!-- places scheme table END -->
 
-                        <!-- places scheme table -->
-                        <div class="places-scheme-table" style="left:829.5px; top:407.5px">
-                            <div class="places-scheme-table-area"></div>
-                            <div class="places-scheme-table-icon">2</div>
-                            <div class="places-scheme-table-places"></div>
-                            <div class="places-scheme-table-window">
-                                <div class="places-scheme-table-window-title">Стол №2</div>
-                                <div class="places-scheme-table-window-list">
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                            <!-- places scheme table -->
+                            <div class="places-scheme-table" style="left:829.5px; top:407.5px">
+                                <div class="places-scheme-table-area"></div>
+                                <div class="places-scheme-table-icon">2</div>
+                                <div class="places-scheme-table-places"></div>
+                                <div class="places-scheme-table-window">
+                                    <div class="places-scheme-table-window-title">Стол №2</div>
+                                    <div class="places-scheme-table-window-list">
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-63" data-top="-6">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="23">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-35" data-top="44">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-6" data-top="53">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="23" data-top="45">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="44" data-top="24">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="52" data-top="-6">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="45" data-top="-35">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-63" data-top="-6">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="23">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-35" data-top="44">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-6" data-top="53">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="23" data-top="45">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="44" data-top="24">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="52" data-top="-6">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="45" data-top="-35">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
+                                    <div class="places-scheme-table-window-detail"></div>
                                 </div>
-                                <div class="places-scheme-table-window-detail"></div>
                             </div>
-                        </div>
-                        <!-- places scheme table END -->
+                            <!-- places scheme table END -->
 
-                        <!-- places scheme table -->
-                        <div class="places-scheme-table places-scheme-table-bottom" style="left:661.5px; top:155.5px">
-                            <div class="places-scheme-table-area"></div>
-                            <div class="places-scheme-table-icon">3</div>
-                            <div class="places-scheme-table-places"></div>
-                            <div class="places-scheme-table-window">
-                                <div class="places-scheme-table-window-title">Стол №3</div>
-                                <div class="places-scheme-table-window-list">
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="24">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                            <!-- places scheme table -->
+                            <div class="places-scheme-table places-scheme-table-bottom" style="left:661.5px; top:155.5px">
+                                <div class="places-scheme-table-area"></div>
+                                <div class="places-scheme-table-icon">3</div>
+                                <div class="places-scheme-table-places"></div>
+                                <div class="places-scheme-table-window">
+                                    <div class="places-scheme-table-window-title">Стол №3</div>
+                                    <div class="places-scheme-table-window-list">
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="24">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-65" data-top="-5">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-35" data-top="-55">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-6" data-top="-63">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="23" data-top="-56">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="45" data-top="-34">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="53" data-top="-5">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="45" data-top="25">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-65" data-top="-5">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-35" data-top="-55">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-6" data-top="-63">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="23" data-top="-56">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="45" data-top="-34">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="53" data-top="-5">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="45" data-top="25">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
+                                    <div class="places-scheme-table-window-detail"></div>
                                 </div>
-                                <div class="places-scheme-table-window-detail"></div>
                             </div>
-                        </div>
-                        <!-- places scheme table END -->
+                            <!-- places scheme table END -->
 
-                        <!-- places scheme table -->
-                        <div class="places-scheme-table" style="left:661.5px; top:453.5px">
-                            <div class="places-scheme-table-area"></div>
-                            <div class="places-scheme-table-icon">4</div>
-                            <div class="places-scheme-table-places"></div>
-                            <div class="places-scheme-table-window">
-                                <div class="places-scheme-table-window-title">Стол №4</div>
-                                <div class="places-scheme-table-window-list">
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                            <!-- places scheme table -->
+                            <div class="places-scheme-table" style="left:661.5px; top:453.5px">
+                                <div class="places-scheme-table-area"></div>
+                                <div class="places-scheme-table-icon">4</div>
+                                <div class="places-scheme-table-places"></div>
+                                <div class="places-scheme-table-window">
+                                    <div class="places-scheme-table-window-title">Стол №4</div>
+                                    <div class="places-scheme-table-window-list">
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-63" data-top="-6">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="23">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-35" data-top="44">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-6" data-top="53">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="23" data-top="45">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="44" data-top="24">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="52" data-top="-6">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="45" data-top="-35">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-63" data-top="-6">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="23">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-35" data-top="44">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-6" data-top="53">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="23" data-top="45">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="44" data-top="24">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="52" data-top="-6">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="45" data-top="-35">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
+                                    <div class="places-scheme-table-window-detail"></div>
                                 </div>
-                                <div class="places-scheme-table-window-detail"></div>
                             </div>
-                        </div>
-                        <!-- places scheme table END -->
+                            <!-- places scheme table END -->
 
-                        <!-- places scheme table -->
-                        <div class="places-scheme-table places-scheme-table-bottom" style="left:493.5px; top:201.5px">
-                            <div class="places-scheme-table-area"></div>
-                            <div class="places-scheme-table-icon">5</div>
-                            <div class="places-scheme-table-places"></div>
-                            <div class="places-scheme-table-window">
-                                <div class="places-scheme-table-window-title">Стол №5</div>
-                                <div class="places-scheme-table-window-list">
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="24">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                            <!-- places scheme table -->
+                            <div class="places-scheme-table places-scheme-table-bottom" style="left:493.5px; top:201.5px">
+                                <div class="places-scheme-table-area"></div>
+                                <div class="places-scheme-table-icon">5</div>
+                                <div class="places-scheme-table-places"></div>
+                                <div class="places-scheme-table-window">
+                                    <div class="places-scheme-table-window-title">Стол №5</div>
+                                    <div class="places-scheme-table-window-list">
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="24">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-65" data-top="-5">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-35" data-top="-55">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-6" data-top="-63">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="23" data-top="-56">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="45" data-top="-34">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="53" data-top="-5">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="45" data-top="25">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-65" data-top="-5">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-35" data-top="-55">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-6" data-top="-63">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="23" data-top="-56">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="45" data-top="-34">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="53" data-top="-5">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="45" data-top="25">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
+                                    <div class="places-scheme-table-window-detail"></div>
                                 </div>
-                                <div class="places-scheme-table-window-detail"></div>
                             </div>
-                        </div>
-                        <!-- places scheme table END -->
+                            <!-- places scheme table END -->
 
-                        <!-- places scheme table -->
-                        <div class="places-scheme-table" style="left:493.5px; top:407.5px">
-                            <div class="places-scheme-table-area"></div>
-                            <div class="places-scheme-table-icon">6</div>
-                            <div class="places-scheme-table-places"></div>
-                            <div class="places-scheme-table-window">
-                                <div class="places-scheme-table-window-title">Стол №6</div>
-                                <div class="places-scheme-table-window-list">
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                            <!-- places scheme table -->
+                            <div class="places-scheme-table" style="left:493.5px; top:407.5px">
+                                <div class="places-scheme-table-area"></div>
+                                <div class="places-scheme-table-icon">6</div>
+                                <div class="places-scheme-table-places"></div>
+                                <div class="places-scheme-table-window">
+                                    <div class="places-scheme-table-window-title">Стол №6</div>
+                                    <div class="places-scheme-table-window-list">
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-63" data-top="-6">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="23">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-35" data-top="44">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-6" data-top="53">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="23" data-top="45">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="44" data-top="24">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="52" data-top="-6">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="45" data-top="-35">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-63" data-top="-6">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="23">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-35" data-top="44">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-6" data-top="53">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="23" data-top="45">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="44" data-top="24">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="52" data-top="-6">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="45" data-top="-35">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
+                                    <div class="places-scheme-table-window-detail"></div>
                                 </div>
-                                <div class="places-scheme-table-window-detail"></div>
                             </div>
-                        </div>
-                        <!-- places scheme table END -->
+                            <!-- places scheme table END -->
 
-                        <!-- places scheme table -->
-                        <div class="places-scheme-table places-scheme-table-bottom" style="left:324.5px; top:155.5px">
-                            <div class="places-scheme-table-area"></div>
-                            <div class="places-scheme-table-icon">7</div>
-                            <div class="places-scheme-table-places"></div>
-                            <div class="places-scheme-table-window">
-                                <div class="places-scheme-table-window-title">Стол №7</div>
-                                <div class="places-scheme-table-window-list">
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="24">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                            <!-- places scheme table -->
+                            <div class="places-scheme-table places-scheme-table-bottom" style="left:324.5px; top:155.5px">
+                                <div class="places-scheme-table-area"></div>
+                                <div class="places-scheme-table-icon">7</div>
+                                <div class="places-scheme-table-places"></div>
+                                <div class="places-scheme-table-window">
+                                    <div class="places-scheme-table-window-title">Стол №7</div>
+                                    <div class="places-scheme-table-window-list">
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="24">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-65" data-top="-5">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-35" data-top="-55">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-6" data-top="-63">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="23" data-top="-56">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="45" data-top="-34">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="53" data-top="-5">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="45" data-top="25">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-65" data-top="-5">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-35" data-top="-55">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-6" data-top="-63">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="23" data-top="-56">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="45" data-top="-34">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="53" data-top="-5">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="45" data-top="25">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
+                                    <div class="places-scheme-table-window-detail"></div>
                                 </div>
-                                <div class="places-scheme-table-window-detail"></div>
                             </div>
-                        </div>
-                        <!-- places scheme table END -->
+                            <!-- places scheme table END -->
 
-                        <!-- places scheme table -->
-                        <div class="places-scheme-table" style="left:324.5px; top:453.5px">
-                            <div class="places-scheme-table-area"></div>
-                            <div class="places-scheme-table-icon">8</div>
-                            <div class="places-scheme-table-places"></div>
-                            <div class="places-scheme-table-window">
-                                <div class="places-scheme-table-window-title">Стол №8</div>
-                                <div class="places-scheme-table-window-list">
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                            <!-- places scheme table -->
+                            <div class="places-scheme-table" style="left:324.5px; top:453.5px">
+                                <div class="places-scheme-table-area"></div>
+                                <div class="places-scheme-table-icon">8</div>
+                                <div class="places-scheme-table-places"></div>
+                                <div class="places-scheme-table-window">
+                                    <div class="places-scheme-table-window-title">Стол №8</div>
+                                    <div class="places-scheme-table-window-list">
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="-34">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-63" data-top="-6">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-56" data-top="23">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-35" data-top="44">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="-6" data-top="53">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="23" data-top="45">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="44" data-top="24">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вадим</div>
+                                                <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="52" data-top="-6">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="places-scheme-table-window-item" data-left="45" data-top="-35">
+                                            <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
+                                            <div class="places-scheme-table-window-item-detail">
+                                                <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
+                                                <div class="places-scheme-table-window-item-detail-name">Вероника</div>
+                                                <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-63" data-top="-6">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-56" data-top="23">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-35" data-top="44">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="-6" data-top="53">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="23" data-top="45">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-4.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="44" data-top="24">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-1.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вадим</div>
-                                            <div class="places-scheme-table-window-item-detail-text">Шумный друг</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="52" data-top="-6">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-3.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="places-scheme-table-window-item" data-left="45" data-top="-35">
-                                        <div class="places-scheme-table-window-item-photo"><img src="files/places-2.jpg" alt="" /></div>
-                                        <div class="places-scheme-table-window-item-detail">
-                                            <div class="places-scheme-table-window-item-detail-photo"><img src="files/places-2-detail.jpg" alt="" /></div>
-                                            <div class="places-scheme-table-window-item-detail-name">Вероника</div>
-                                            <div class="places-scheme-table-window-item-detail-text">красивая подружка</div>
-                                        </div>
-                                    </div>
+                                    <div class="places-scheme-table-window-detail"></div>
                                 </div>
-                                <div class="places-scheme-table-window-detail"></div>
                             </div>
+                            <!-- places scheme table END -->
                         </div>
-                        <!-- places scheme table END -->
                     </div>
                 </div>
                 <!-- places END -->
@@ -1582,7 +1593,7 @@
 
             <!-- gallery -->
             <div class="gallery" id="gallery">
-                <div class="section-title animate">Как молоды мы были</div>
+                <div class="section-title animate">Как молоды мы&nbsp;были</div>
                 <div class="section-subtitle animate">Фотогалерея</div>
                 <div class="gallery-inner">
                     <div class="gallery-menu animate">
