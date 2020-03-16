@@ -41,7 +41,8 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
 
 .page-form header {background:#babcd6}
 
-.header-logo {float:left; margin:13px 0 0 0; width:41px; height:37px; background:url(../images/header-logo.svg) no-repeat}
+.header-logo {float:left; margin:13px 0 0 0; width:41px; height:37px; background:url(../images/header-logo.svg) no-repeat; position:relative}
+.header-logo a {display:block; position:absolute; left:-10px; top:-10px; right:-10px; bottom:-10px}
 .header-tag {float:left; font-weight:normal; font-size:18px; line-height:23px; color:#95669e; margin:19px 0 0 10px}
 
 @media screen and (max-width:1159px) {
@@ -51,11 +52,11 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
     .menu-open .header-tag {transform:translateY(-300%)}
 }
 
-.page-form .header-logo {margin:18px 0 0 0; width:32px; height:26px; background:url(../images/header-logo-form.svg) no-repeat}
+.page-form .header-logo {margin:13px 0 0 0; background:url(../images/header-logo-form.svg) no-repeat}
 .page-form .header-tag {color:#fff}
 
 @media screen and (max-width:1159px) {
-    .page-form .header-logo {width:30px; height:27px; background:url(../images/header-logo-form-mobile.svg) no-repeat; background-size:auto}
+    .page-form .header-logo {margin:18px 0 0 0; width:30px; height:27px; background:url(../images/header-logo-form-mobile.svg) no-repeat; background-size:auto}
     .page-form .header-tag {margin-top:18px; font-size:18px; line-height:23px}
 }
 
@@ -99,6 +100,23 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
 .page-form .header-phone-link path {fill:#fff}
 
 .menu-open .header-phone-link {transform:translateY(-300%)}
+
+.header-telegram-link {float:right; margin:22px 20px 0 0; transition:all 0.5s}
+.header-telegram-link svg {display:block}
+.header-telegram-link path {fill:#95669e; transition:all 0.2s}
+.header-telegram-link:hover path {fill:#9a7fa8}
+.header-telegram-link circle {stroke:#95669e; transition:all 0.2s}
+.header-telegram-link:hover circle {stroke:#9a7fa8}
+
+@media screen and (max-width:1159px) {
+    .header-telegram-link {margin:18px 30px 0 0}
+    .header-telegram-link svg {width:30px; height:30px}
+}
+
+.page-form .header-telegram-link path {fill:#fff}
+.page-form .header-telegram-link circle {stroke:#fff}
+
+.menu-open .header-telegram-link {transform:translateY(-300%)}
 
 .nav {position:fixed; z-index:99; right:0; top:0; bottom:0; width:328px; background:#95669d; transform:translateX(100%); transition:transform 0.5s}
 .menu-open .nav {transform:none}
@@ -184,7 +202,7 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
     .nav-tag {top:79px; font-size:36px; line-height:45px}
 }
 
-.welcome {height:579px; background:url(../images/welcome.jpg) no-repeat center; background-size:cover; padding:49px 0 0 0; text-align:center}
+.welcome {height:579px; background:url(../images/welcome.jpg) no-repeat center; background-size:cover; padding:49px 0 0 0; text-align:center; position:relative}
 .welcome-logo {width:363px; height:334px; background:url(../images/welcome-logo.svg) no-repeat; margin:0 auto; padding:93px 0 0 0}
 .welcome-logo-tag {width:251px; height:149px; background:url(../images/welcome-logo-tag.png) no-repeat; margin:0 auto}
 .welcome-tag span {display:inline-block; vertical-align:top; background:#fff; height:42px; padding:0 15px; color:rgba(0, 0, 0, 0.5); font-weight:normal; font-size:22px; line-height:40px; border:1px solid #ededed; box-shadow:10px 10px 40px rgba(210, 210, 210, 0.25); border-radius:4px}
@@ -259,8 +277,17 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
 
 .location-map {position:absolute; left:0; top:0; right:0; bottom:0}
 
+.location-map-ctrl {display:none}
+
 @media screen and (max-width:1159px) {
     .location-map {position:relative; left:auto; top:auto; right:auto; bottom:auto; height:812px}
+
+    .location-map-ctrl {display:block; position:absolute; left:50%; top:76px; width:341px; margin:0 0 0 -170px; background:#ac97b7; color:#fff; text-decoration:none; text-align:center; border-radius:4px; padding:17px 40px 18px 40px}
+    .location-map-ctrl-title {font-weight:600; font-size:20px; line-height:24px}
+    .location-map-ctrl-text {font-weight:normal; font-size:16px; line-height:19px; margin:6px 0 0 0}
+    .location-map-ctrl span:nth-child(2) {display:none}
+    .location-map-ctrl.active span:nth-child(1) {display:none}
+    .location-map-ctrl.active span:nth-child(2) {display:inline}
 }
 
 .section-title {text-align:center; text-transform:uppercase; font-size:54px; line-height:68px; color:#95669e; letter-spacing:0.03em}
@@ -566,12 +593,13 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
 .guests {background:#e4e1ec url(../images/guests.jpg) no-repeat center bottom; background-size:100% auto; padding:150px 0 124px 0}
 .guests-inner {max-width:1160px; margin:0 auto}
 .guests-list {margin:17px -10px 0 -10px; font-size:0; line-height:0; letter-spacing:-1px}
-.guests-list-more {margin:0 -10px; display:none}
 .guests-item {display:inline-block; vertical-align:top; width:25%; padding:33px 10px 0 10px}
+.guests-item+.guests-item+.guests-item+.guests-item+.guests-item+.guests-item+.guests-item+.guests-item+.guests-item {display:none}
+.guests.open .guests-item+.guests-item+.guests-item+.guests-item+.guests-item+.guests-item+.guests-item+.guests-item+.guests-item {display:inline-block}
 .guests-item-photo img {display:block; width:100%; border-radius:4px}
 .guests-item-title {font-weight:normal; font-size:24px; line-height:30px; color:#1f1f1f; letter-spacing:0; padding:20px 0 0 0}
 .guests-item-post {margin:4px 0 0 0; font-size:16px; line-height:24px; letter-spacing:0; color:#575757}
-.guests-more-link {text-align:center; margin:78px 0 0 0}
+.guests-more-link {display:none; text-align:center; margin:78px 0 0 0}
 .guests-more-link a {display:inline-block; vertical-align:top; height:58px; width:269px; text-align:center; background:#ac97b7; font-weight:normal; font-size:20px; line-height:58px; border-radius:4px; text-decoration:none; color:#fff}
 .guests-more-link a:hover {background:#9a7fa8}
 .guests-more-link a:active {background:#c2afcc}
@@ -790,18 +818,25 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
     .footer-logo {margin:64px auto 0 auto}
 }
 
-.confirm-link {display:block; position:fixed; right:0; top:50%; width:190px; height:93px; z-index:90; margin:-46px 0 0 0; background:#95669e; box-shadow:2px 2px 20px rgba(82, 82, 82, 0.47); border-radius:2px; text-align:center; font-weight:normal; font-size:18px; line-height:22px; text-decoration:none; color:#fff; padding:37px 20px 0 20px; transition:all 0.2s}
+.confirm-link {display:block; position:absolute; right:0; top:50%; width:190px; height:93px; z-index:90; margin:-46px 0 0 0; background:#ac97b7; box-shadow:2px 2px 20px rgba(82, 82, 82, 0.47); border-radius:2px; text-align:center; font-weight:normal; font-size:18px; line-height:22px; text-decoration:none; color:#fff; padding:37px 20px 0 20px; transition:all 0.2s}
 .confirm-link:hover {background:#9a7fa8}
 .confirm-link::before {content:""; display:block; position:absolute; left:50%; top:12px; width:24px; height:24px; margin:0 0 0 -12px; background:url(../images/confirm-link.svg) no-repeat}
 .confirm-link::after {content:""; display:block; position:absolute; left:5px; top:5px; right:5px; bottom:5px; border:1px solid rgba(255, 255, 255, 0.5); border-radius:2px}
 
+.confirm-link-scroll {display:block; opacity:0; visibility:hidden; position:fixed; z-index:90; right:202px; bottom:30px; width:281px; height:44px; font-size:20px; line-height:42px; background:#ac97b7; box-shadow:2px 2px 20px rgba(82, 82, 82, 0.47); border-radius:2px; font-weight:normal; text-decoration:none; color:#fff; text-align:center; transition:opacity 0.2s, background-color 0.2s}
+.confirm-link-scroll.visible {opacity:1; visibility:visible}
+.confirm-link-scroll:hover {background:#9a7fa8}
+.confirm-link-scroll::before {content:""; display:inline-block; vertical-align:top; width:24px; height:24px; margin:10px 10px 0 0; background:url(../images/confirm-link.svg) no-repeat}
+
 @media screen and (max-width:1159px) {
-    .confirm-link {right:74px; top:auto; bottom:20px; width:281px; height:44px; margin:0; padding:0; font-size:20px; line-height:42px; text-align:center}
+    .confirm-link {right:50%; top:auto; bottom:20px; width:281px; height:44px; margin:0 -140px 0 0; padding:0; font-size:20px; line-height:42px; text-align:center}
     .confirm-link::before {display:inline-block; vertical-align:top; position:relative; left:auto; top:auto; margin:10px 10px 0 0}
     .confirm-link::after {display:none}
+
+    .confirm-link-scroll {right:74px; bottom:20px}
 }
 
-.up-link {display:block; opacity:0; visibility:hidden; position:fixed; z-index:90; right:147px; bottom:30px; width:45px; height:45px; background:#95669e url(../images/up-link.svg) no-repeat center; box-shadow:2px 2px 20px rgba(82, 82, 82, 0.21); border-radius:2px; transition:opacity 0.2s}
+.up-link {display:block; opacity:0; visibility:hidden; position:fixed; z-index:90; right:147px; bottom:30px; width:45px; height:45px; background:#ac97b7 url(../images/up-link.svg) no-repeat center; box-shadow:2px 2px 20px rgba(82, 82, 82, 0.21); border-radius:2px; transition:opacity 0.2s, background-color 0.2s}
 .up-link.visible {opacity:1; visibility:visible}
 .up-link:hover {background-color:#9a7fa8}
 
@@ -809,7 +844,8 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
     .up-link {bottom:20px; right:20px; width:44px; height:44px}
 }
 
-.page-form-header {margin:30px auto 0 auto; width:181px; height:164px; background:url(../images/page-form-header.png) no-repeat}
+.page-form-header {margin:30px auto 0 auto; width:181px; height:164px; background:url(../images/page-form-header.png) no-repeat; position:relative}
+.page-form-header a {display:block; position:absolute; left:0; top:0; right:0; bottom:0}
 
 @media screen and (max-width:1159px) {
     .page-form-header {margin:19px auto 0 auto; width:154px; height:139px; background:url(../images/page-form-header-mobile.png) no-repeat}
@@ -1164,3 +1200,4 @@ label.error-text {display:block; font-size:14px; line-height:17px; color:#f50000
 
 .animate {transform:translateY(30px); opacity:0; transition:transform 0.5s, opacity 0.5s}
 .animate-start {transform:none; opacity:1}
+.when-item.animate {transition:transform 0.2s, opacity 0.2s}

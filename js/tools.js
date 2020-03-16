@@ -192,17 +192,29 @@ $(document).ready(function() {
         ]
     });
 
+    $('.guests').each(function() {
+        if ($('.guests-item').length > 8) {
+            $('.guests-more-link').show();
+        }
+    });
+
     $('.guests-more-link a').click(function(e) {
         $('.guests').toggleClass('open');
         $('.guests-list-more').stop(true, true).slideToggle();
         e.preventDefault();
     });
 
-    $('.nav-list a, .footer-menu a, .confirm-link').click(function(e) {
-        var curBlock = $($(this).attr('href'));
-        if (curBlock.length == 1) {
-            $('html, body').animate({'scrollTop': curBlock.offset().top});
-            e.preventDefault();
+    $('.nav-list a, .footer-menu a, .confirm-link, .confirm-link-scroll').click(function(e) {
+        var curLink = $(this);
+        if (curLink.attr('href')[0] === '#') {
+            var curBlock = $(curLink.attr('href'));
+            if (curBlock.length == 1) {
+                if ($(window).width() < 1160) {
+                    $('html').removeClass('menu-open');
+                }
+                $('html, body').animate({'scrollTop': curBlock.offset().top});
+                e.preventDefault();
+            }
         }
     });
 
@@ -423,7 +435,7 @@ $(document).ready(function() {
                 var control = myMap.controls.get('routePanelControl');
 
                 control.routePanel.state.set({
-                    type: 'masstransit',
+                    type: 'auto',
                     fromEnabled: true,
                     to: coords,
                     toEnabled: false
@@ -431,13 +443,24 @@ $(document).ready(function() {
 
                 control.routePanel.options.set({
                     allowSwitch: false,
-                    reverseGeocoding: true,
-                    types: { driving: true, masstransit: true, pedestrian: true, taxi: true }
+                    reverseGeocoding: true
                 });
             }
         } else {
             if (myMap !== undefined) {
                 myMap.controls.remove('routePanelControl');
+            }
+        }
+        e.preventDefault();
+    });
+
+    $('.location-map-ctrl').click(function(e) {
+        if (myMap !== undefined) {
+            $('.location-map-ctrl').toggleClass('active');
+            if ($('.location-map-ctrl').hasClass('active')) {
+                myMap.behaviors.enable('drag');
+            } else {
+                myMap.behaviors.disable('drag');
             }
         }
         e.preventDefault();
@@ -466,6 +489,7 @@ function getDaysText(number) {
 
 $(window).on('load resize scroll', function() {
     var curScroll = $(window).scrollTop();
+    var curHeight = $('.nav').height();
     if (curScroll > 0) {
         $('html').addClass('header-fixed');
         var lastScroll = $('header').data('lastScroll');
@@ -485,31 +509,36 @@ $(window).on('load resize scroll', function() {
         $('html').removeClass('header-fixed header-up');
     }
 
-    if (curScroll > $(window).height()) {
-        $('.up-link').addClass('visible');
-    } else {
-        $('.up-link').removeClass('visible');
-    }
+    if ($('.up-link').length == 1) {
+        if (curScroll > $('.confirm-link').offset().top + $('.confirm-link').outerHeight()) {
+            $('.up-link, .confirm-link-scroll').addClass('visible');
+        } else {
+            $('.up-link, .confirm-link-scroll').removeClass('visible');
+        }
 
-    if (curScroll + $(window).height() > $('.footer').offset().top) {
-        $('.up-link').css({'margin-bottom': (curScroll + $(window).height()) - $('.footer').offset().top});
-    } else {
-        $('.up-link').css({'margin-bottom': 0});
+        if (curScroll + curHeight > $('.footer').offset().top) {
+            $('.up-link, .confirm-link-scroll').css({'margin-bottom': (curScroll + curHeight) - $('.footer').offset().top});
+        } else {
+            $('.up-link, .confirm-link-scroll').css({'margin-bottom': 0});
+        }
     }
 
     $('.nav-list a').each(function() {
-        var curBlock = $($(this).attr('href'));
-        if (curBlock.length == 1) {
-            if ((curScroll + $(window).height() / 2) > curBlock.offset().top) {
-                $('.nav-list li.active').removeClass('active');
-                $(this).parent().addClass('active');
+        var curLink = $(this);
+        if (curLink.attr('href')[0] === '#') {
+            var curBlock = $(curLink.attr('href'));
+            if (curBlock.length == 1) {
+                if ((curScroll + curHeight / 2) > curBlock.offset().top) {
+                    $('.nav-list li.active').removeClass('active');
+                    $(this).parent().addClass('active');
+                }
             }
         }
     });
 
     $('.animate').each(function() {
         var curBlock = $(this);
-        if ((curScroll + $(window).height()) > curBlock.offset().top) {
+        if ((curScroll + curHeight) > curBlock.offset().top) {
             curBlock.addClass('animate-start');
         } else {
             curBlock.removeClass('animate-start');
