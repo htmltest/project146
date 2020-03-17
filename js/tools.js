@@ -289,59 +289,29 @@ $(document).ready(function() {
         }
     });
 
-    $('body').on('change', '.form-info .form-avatar-upload input', function() {
+    $('body').on('change', '.form-avatar-upload input', function() {
         var curInput = $(this);
-        var formData = new FormData();
-        formData.append(curInput.attr('name'), curInput.prop('files')[0]);
+        var formData = new FormData($('.page-form-container form')[0]);
         $.ajax({
             type: 'POST',
-            url: $('.form-info .form-avatar').attr('data-link'),
+            url: $('.form-avatar').attr('data-link'),
             data: formData,
             cache: false,
             contentType: false,
             processData: false,
             dataType: 'json',
             success: function(data) {
-                $('.form-info .form-avatar-inner label.error-text').remove();
-                $('.form-info .form-avatar-upload label.error').remove();
+                $('.form-avatar-inner label.error-text').remove();
+                $('.form-avatar-upload label.error').remove();
                 if (data.status == 'success') {
-                    $('.form-info .form-avatar-preview').css({'background-image': 'url(' + data.path + ')'});
+                    $('.form-avatar-preview').css({'background-image': 'url(' + data.path + ')'});
                 } else {
-                    $('.form-info .form-avatar-inner').append('<label class="error-text">Ошибка загрузки: ' + data.message + '</label>');
+                    $('.form-avatar-inner').append('<label class="error-text">Ошибка загрузки</label>');
                 }
             },
             error: function() {
-                $('.form-info .form-avatar-inner label.error-text').remove();
-                $('.form-info .form-avatar-inner').append('<label class="error-text">Ошибка загрузки</label>');
-            }
-        });
-    });
-
-    $('body').on('change', '.form-guest-item .form-guest-avatar-upload input', function() {
-        var curInput = $(this);
-        var curGuest = curInput.parents().filter('.form-guest-item');
-        var formData = new FormData();
-        formData.append(curInput.attr('name'), curInput.prop('files')[0]);
-        $.ajax({
-            type: 'POST',
-            url: curGuest.find('.form-guest-avatar').attr('data-link'),
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            dataType: 'json',
-            success: function(data) {
-                curGuest.find('.form-guest-avatar-inner label.error-text').remove();
-                curGuest.find('.form-guest-avatar-upload label.error').remove();
-                if (data.status == 'success') {
-                    curGuest.find('.form-guest-avatar-preview').css({'background-image': 'url(' + data.path + ')'});
-                } else {
-                    curGuest.find('.form-guest-avatar-inner').append('<label class="error-text">Ошибка загрузки: ' + data.message + '</label>');
-                }
-            },
-            error: function() {
-                curGuest.find('.form-guest-avatar-inner label.error-text').remove();
-                curGuest.find('.form-guest-avatar-inner').append('<label class="error-text">Ошибка загрузки</label>');
+                $('.form-avatar-inner label.error-text').remove();
+                $('.form-avatar-inner').append('<label class="error-text">Ошибка загрузки</label>');
             }
         });
     });
@@ -606,19 +576,11 @@ function initForm(curForm) {
                 }
             });
             validator.showErrors();
-            curForm.find('.form-info .form-avatar-inner label.error-text').remove();
-            curForm.find('.form-info .form-avatar-upload label.error').each(function() {
-                curForm.find('.form-info .form-avatar-inner').append('<label class="error-text">' + curForm.find('.form-info .form-avatar-upload label.error').html() + '</label>');
+            curForm.find('.form-avatar-inner label.error-text').remove();
+            curForm.find('.form-avatar-upload label.error').each(function() {
+                curForm.find('.form-avatar-inner').append('<label class="error-text">' + curForm.find('.form-avatar-upload label.error').html() + '</label>');
             });
-            curForm.find('.form-info .form-avatar-upload label.error').remove();
-            curForm.find('.form-guest-item').each(function() {
-                var curGuest = $(this);
-                curGuest.find('.form-guest-avatar-inner label.error-text').remove();
-                curGuest.find('.form-guest-avatar-upload label.error').each(function() {
-                    curGuest.find('.form-guest-avatar-inner').append('<label class="error-text">' + curGuest.find('.form-guest-avatar-upload label.error').html() + '</label>');
-                });
-                curGuest.find('.form-guest-avatar-upload label.error').remove();
-            });
+            curForm.find('.form-avatar-upload label.error').remove();
         },
         submitHandler: function(form) {
             var groupCheck = true;
