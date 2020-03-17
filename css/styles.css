@@ -251,6 +251,7 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
 .location-routes-enable .location-routes a span:nth-child(2) {display:inline}
 .location-routes-enable .location-routes a::before {content:""; display:inline-block; vertical-align:middle; width:29px; height:8px; background:url(../images/location-routes.svg) no-repeat; margin:-4px 26px 0 0; transform:scale(-1, 1)}
 .location-routes-enable .location-routes a::after {display:none}
+.location-routes-mobile {display:none}
 
 @media screen and (max-width:1159px) {
     .location {padding:0}
@@ -269,10 +270,12 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
     .location-descr {margin:13px 0 0 0}
     .location-coords {margin:15px 0 0 0; font-size:18px; line-height:27px}
     .location-coords span::after {width:20px; height:24px; background-size:100%}
-    .location-routes {margin:13px 0 0 0; font-size:19px; line-height:28px}
-    .location-routes a::after {margin:-4px 0 0 10px}
-    .location-routes a span {border-bottom:1px dashed #b0b0b0}
-    .location-routes a:hover span {border-bottom-color:transparent}
+    .location-routes {display:none}
+    .location-routes-mobile {display:block; margin:13px 0 0 0; font-size:19px; line-height:28px}
+    .location-routes-mobile a::after {content:""; display:inline-block; vertical-align:middle; width:29px; height:8px; background:url(../images/location-routes.svg) no-repeat; margin:-4px 0 0 10px}
+    .location-routes-mobile a {color:#000; text-decoration:none}
+    .location-routes-mobile a span {border-bottom:1px dashed #b0b0b0; transition:all 0.2s}
+    .location-routes-mobile a:hover span {border-bottom-color:transparent}
 }
 
 .location-map {position:absolute; left:0; top:0; right:0; bottom:0}
@@ -1071,6 +1074,21 @@ label.error-text {display:block; font-size:14px; line-height:17px; color:#f50000
     .form-avatar-inner label.error-text {left:0; bottom:-32px; margin:0; transform:translateX(-50%)}
 }
 
+.form-guest-avatar::after {content:""; display:block; clear:both}
+.form-guest-avatar-inner {float:left; width:105px; height:105px; border:3px solid #95669d; position:relative; border-radius:50%; margin:-63px 0 0 0; background:#fff}
+.form-guest-avatar-preview {position:absolute; left:0; top:0; right:0; bottom:0; background:no-repeat center; background-size:cover; overflow:hidden; border-radius:50%}
+.form-guest-avatar-upload {position:absolute; left:0; top:0; right:0; bottom:0; overflow:hidden}
+.form-guest-avatar-upload::before {content:""; position:absolute; display:block; left:0; bottom:0; right:0; height:45px; border-radius:0 0 50px 50px; background:rgba(0, 0, 0, 0.3) url(../images/form-avatar.svg) no-repeat center}
+.form-guest-avatar-upload input {height:200px; z-index:1; position:absolute; top:0; right:0; opacity:0; cursor:pointer; font-size:200px; background:url(../images/blank.gif); -webkit-appearance:none}
+.form-guest-avatar-inner label.error-text {position:absolute; left:100%; bottom:0; white-space:nowrap; margin:0 0 20px 20px}
+.form-guest-avatar-upload label.error {display:none !important}
+
+@media screen and (max-width:1159px) {
+    .form-guest-avatar {width:105px; margin:0 auto}
+    .form-guest-avatar::after {content:""; display:block; clear:both}
+    .form-guest-avatar-inner label.error-text {left:0; bottom:-32px; margin:0; transform:translateX(-50%)}
+}
+
 .form-guest-add {margin:40px 0 0 0; text-transform:uppercase; text-align:right}
 .form-guest-add a {display:inline-block; text-decoration:none; color:#fff; font-size:16px; line-height:35px; height:35px; background:#95669e; padding:0 20px; letter-spacing:0.05em; border-radius:3px; transition:all 0.2s; text-transform:uppercase}
 .form-guest-add a::after {content:"+"; font-size:20px; display:inline-block; margin:0 0 0 5px; vertical-align:top}
@@ -1083,8 +1101,7 @@ label.error-text {display:block; font-size:14px; line-height:17px; color:#f50000
 }
 
 .form-guest-list {counter-reset:guestnumber}
-.form-guest-item {margin:20px 0 0 0}
-.form-guest-item:first-child {margin:40px 0 0 0}
+.form-guest-item {margin:89px 0 0 0}
 
 @media screen and (max-width:1159px) {
     .form-guest-item:first-child {margin:50px 0 0 0}
