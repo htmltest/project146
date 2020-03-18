@@ -660,45 +660,28 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
     .wishes-list-item-info {margin:0; max-width:none}
 }
 
-.wishes-colors {width:1162px; margin:11px auto 0 auto}
-.wishes-colors::after {content:""; display:block; clear:both}
-.wishes-colors-list {float:left; width:571px; height:285px; position:relative}
-.wishes-colors-item {position:absolute; width:177px}
-.wishes-colors-item:nth-child(1) {left:0; top:0; height:155px}
-.wishes-colors-item:nth-child(2) {left:0; top:175px; height:110px}
-.wishes-colors-item:nth-child(3) {left:197px; top:0; height:285px}
-.wishes-colors-item:nth-child(4) {left:394px; top:0; height:141px}
-.wishes-colors-item:nth-child(5) {left:394px; top:161px; height:124px; width:79px}
-.wishes-colors-item:nth-child(6) {left:493px; top:161px; height:124px; width:79px}
-.wishes-clothes {float:right; width:571px; height:285px; position:relative}
-.wishes-clothes-item {position:absolute; width:177px; background:no-repeat center; background-size:cover}
-.wishes-clothes-item:nth-child(1) {left:0; top:0; height:155px}
-.wishes-clothes-item:nth-child(2) {left:0; top:175px; height:110px}
-.wishes-clothes-item:nth-child(3) {left:197px; top:0; height:285px}
-.wishes-clothes-item:nth-child(4) {left:394px; top:0; height:141px}
-.wishes-clothes-item:nth-child(5) {left:394px; top:161px; height:124px; width:79px}
-.wishes-clothes-item:nth-child(6) {left:493px; top:161px; height:124px; width:79px}
+.wishes-colors {width:1162px; margin:9px auto 0 auto}
+.wishes-clothes::after {content:""; display:block; clear:both}
+.wishes-clothes img {display:block; width:100%}
+.wishes-clothes-1 {float:right; width:428px}
+.wishes-clothes-2 {float:left; width:339px}
+.wishes-clothes-3 {float:left; width:390px; margin:0 0 0 3px}
+.wishes-colors-list {margin:35px 0 0 0; text-align:center; font-size:0; line-height:0; letter-spacing:-1px}
+.wishes-colors-item {display:inline-block; vertical-align:top; margin:0 0 0 12px; width:50px; height:50px; background:no-repeat center; background-size:cover; border:4px solid #fff; border-radius:50%; box-shadow:0px 4px 10px rgba(210, 210, 210, 0.25)}
+.wishes-colors-item:first-child {margin:0}
 
 @media screen and (max-width:1159px) {
-    .wishes-colors {width:440px; margin:11px auto 0 auto}
-    .wishes-colors-list {float:none; width:440px}
-    .wishes-colors-item {width:136px}
-    .wishes-colors-item:nth-child(3) {left:151px}
-    .wishes-colors-item:nth-child(4) {left:302px}
-    .wishes-colors-item:nth-child(5) {left:302px; width:61px}
-    .wishes-colors-item:nth-child(6) {left:378px; width:61px}
-    .wishes-clothes {float:none; width:auto; height:auto; margin:30px 0 0 -20px}
+    .wishes-colors {width:440px; margin:15px auto 0 auto}
     .wishes-clothes::after {content:""; display:block; clear:both}
-    .wishes-clothes-item {float:left; position:relative; width:210px; height:155px; margin:20px 0 0 20px}
-    .wishes-clothes-item:nth-child(1) {left:auto; top:auto; height:155px}
-    .wishes-clothes-item:nth-child(2) {left:auto; top:auto; height:155px}
-    .wishes-clothes-item:nth-child(3) {left:auto; top:auto; height:155px}
-    .wishes-clothes-item:nth-child(4) {left:auto; top:auto; height:155px}
-    .wishes-clothes-item:nth-child(5) {left:auto; top:auto; height:155px; width:210px}
-    .wishes-clothes-item:nth-child(6) {left:auto; top:auto; height:155px; width:210px}
+    .wishes-clothes-1 {float:none; width:auto}
+    .wishes-clothes-2 {float:none; width:auto; margin:10px 0 0 0}
+    .wishes-clothes-3 {float:none; width:auto; margin:10px 0 0 0}
+    .wishes-colors-list {margin:26px 0 0 0}
+    .wishes-colors-item {margin:0 0 0 10px; width:46px; height:46px}
+    .wishes-colors-item:first-child {margin:0}
 }
 
-.team {padding:183px 0 0 0; max-width:865px; margin:0 auto}
+.team {padding:102px 0 0 0; max-width:865px; margin:0 auto}
 .team-list {margin:50px -10px 0 -10px; font-size:0; line-height:0; letter-spacing:-1px; position:relative; white-space:nowrap; overflow:hidden}
 .team-list.slick-initialized {overflow:visible}
 .team-item {display:inline-block; vertical-align:top; width:33.33%; padding:0 10px; white-space:normal}
@@ -713,7 +696,7 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
 .team-list .slick-next:hover {background-color:#9a7fa8}
 
 @media screen and (max-width:1159px) {
-    .team {padding:90px 20px 103px 20px}
+    .team {padding:133px 20px 103px 20px}
     .team-list {margin:63px -10px 0 -10px; font-size:0; line-height:0; letter-spacing:-1px; position:relative; white-space:nowrap; overflow:hidden}
     .team-item-name {font-size:22px; line-height:28px}
     .team-item-post {margin:0; font-size:20px; line-height:30px}
