@@ -362,8 +362,12 @@ $(document).ready(function() {
         if (curInput.prop('checked')) {
             curGuest.find('.form-child-alcohol').addClass('invisible');
             curGuest.find('.form-child-alcohol .form-checkbox-other .form-checkbox input').prop('checked', false).trigger('change');
+            curGuest.find('.form-field-age').removeClass('invisible');
+            curGuest.find('.form-field-age input').addClass('required');
         } else {
             curGuest.find('.form-child-alcohol').removeClass('invisible');
+            curGuest.find('.form-field-age').addClass('invisible');
+            curGuest.find('.form-field-age input').removeClass('required');
         }
     });
 
@@ -486,12 +490,28 @@ $(document).ready(function() {
 
     $('.location-map-ctrl').click(function(e) {
         if (myMap !== undefined) {
-            $('.location-map-ctrl').toggleClass('active');
-            if ($('.location-map-ctrl').hasClass('active')) {
-                myMap.behaviors.enable('drag');
-            } else {
-                myMap.behaviors.disable('drag');
+
+            var curWidth = $(window).width();
+            if (curWidth < 480) {
+                curWidth = 480;
             }
+            var curScroll = $(window).scrollTop();
+            $('html').addClass('location-map-open');
+            $('.wrapper').data('curScroll', curScroll);
+            $('meta[name="viewport"]').attr('content', 'width=' + curWidth);
+            myMap.behaviors.enable('drag');
+        }
+        e.preventDefault();
+    });
+
+    $('.location-map-close').click(function(e) {
+        if (myMap !== undefined) {
+
+            $('html').removeClass('location-map-open');
+            $(window).scrollTop($('.wrapper').data('curScroll'));
+            $('meta[name="viewport"]').attr('content', 'width=device-width');
+
+            myMap.behaviors.disable('drag');
         }
         e.preventDefault();
     });
