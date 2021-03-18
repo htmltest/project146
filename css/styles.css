@@ -1156,8 +1156,7 @@ label.error-text {display:block; font-size:14px; line-height:17px; color:#f50000
 .gallery-list {margin:0 0 0 -20px}
 .gallery-list::after {content:""; display:block; clear:both}
 .gallery-item {float:left; padding:20px 0 0 20px}
-.gallery-item-inner {position:relative; background:no-repeat center; background-size:cover; transition:transform 0.2s, box-shadow 0.2s}
-.gallery-item-inner:hover {box-shadow:0 0 10px rgba(0, 0, 0, 0.1); transform:translateY(-5px)}
+.gallery-item-inner {position:relative; background:no-repeat center; background-size:cover}
 .gallery-item:nth-child(8n-7) .gallery-item-inner {width:570px; height:324px}
 .gallery-item:nth-child(8n-6) .gallery-item-inner {width:373px; height:591px}
 .gallery-item:nth-child(8n-5) {margin-top:-267px}
