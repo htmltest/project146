@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     $('.welcome-days').each(function() {
         var today = new Date();
-        var past  = new Date(2020, 04, 23);
+        var past  = new Date(2021, 06, 19);
         var diff = Math.floor(past.getTime() - today.getTime());
         var day = 1000 * 60 * 60 * 24;
 
@@ -457,7 +457,11 @@ $(document).ready(function() {
 
     var clipboard = new ClipboardJS('.location-coords span');
     clipboard.on('success', function(e) {
-        alert('Координаты скопированы в буфер');
+        $('.location-coords span').addClass('success');
+    });
+
+    $('.location-coords span').on('mouseleave', function() {
+        $('.location-coords span').removeClass('success');
     });
 
     $('.location-routes a').click(function(e) {
@@ -477,7 +481,7 @@ $(document).ready(function() {
 
                 control.routePanel.options.set({
                     allowSwitch: false,
-                    reverseGeocoding: true
+                    reverseGeocoding: false
                 });
             }
         } else {
@@ -516,6 +520,24 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('body').on('click', '.photo-social-item-fb', function(e) {
+        var curTitle = encodeURIComponent($('title').html());
+        var curUrl = encodeURIComponent(window.location.href);
+
+        popupCenter('https://www.facebook.com/sharer/sharer.php?u=' + curUrl, curTitle);
+
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.photo-social-item-vk', function(e) {
+        var curTitle = encodeURIComponent($('title').html());
+        var curUrl = encodeURIComponent(window.location.href);
+
+        popupCenter('https://vk.com/share.php?url=' + curUrl + '&description=' + curTitle, curTitle);
+
+        e.preventDefault();
+    });
+
 });
 
 function getDaysText(number) {
@@ -542,21 +564,8 @@ $(window).on('load resize scroll', function() {
     var curHeight = $('.nav').height();
     if (curScroll > 0) {
         $('html').addClass('header-fixed');
-        var lastScroll = $('header').data('lastScroll');
-        if (typeof (lastScroll) == 'undefined') {
-            lastScroll = 0;
-        }
-
-        if (Math.abs(lastScroll - curScroll) > 5) {
-            if (curScroll > lastScroll){
-                $('header').addClass('header-up');
-            } else {
-                $('header').removeClass('header-up');
-            }
-            $('header').data('lastScroll', curScroll);
-        }
     } else {
-        $('html').removeClass('header-fixed header-up');
+        $('html').removeClass('header-fixed');
     }
 
     if ($('.up-link').length == 1) {
@@ -692,3 +701,16 @@ $(window).on('load resize', function() {
         });
     }
 });
+
+function popupCenter(url, title) {
+    var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left;
+    var dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top;
+    var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+    var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+    var left = ((width / 2) - (480 / 2)) + dualScreenLeft;
+    var top = ((height / 3) - (360 / 3)) + dualScreenTop;
+    var newWindow = window.open(url, title, 'scrollbars=yes, width=' + 480 + ', height=' + 360 + ', top=' + top + ', left=' + left);
+    if (window.focus) {
+        newWindow.focus();
+    }
+}

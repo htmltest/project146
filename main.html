@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="nav-contacts-date">23.05.2020</div>
+                        <div class="nav-contacts-date">19.07.2021</div>
                     </div>
                 </div>
 
@@ -102,7 +102,7 @@
                     <div class="welcome-logo-tag"></div>
                 </div>
                 <div class="welcome-tag animate"><span>#kolyapolya</span></div>
-                <div class="welcome-date animate">23.05.2020</div>
+                <div class="welcome-date animate">19.07.2021</div>
                 <div class="welcome-days animate"><a href="files/833r0dmj9v1g4800a9uu0dl8eg@group.calendar.google.com.ics" target="_blank">Осталось всего <span>210 дней</span>!</a></div>
                 <a href="#checkin" class="confirm-link">Подтвердить участие</a>
             </div>
@@ -131,20 +131,20 @@
                                     <div class="location-address">Московская область, Отрадненское</div>
                                     <div class="location-phone">+7 495 211-95-55</div>
                                     <div class="location-descr">Территория зоны отдыха находится недалеко от Москвы и насчитывает 44&nbsp;гектара живописного старинного парка, в котором сам воздух дышит атмосферой старинной русской усадьбы.</div>
-                                    <div class="location-coords"><span data-clipboard-text="55.869298, 37.306569">55.869298, 37.306569</span></div>
+                                    <div class="location-coords"><span data-clipboard-text="55.869778, 37.308418" data-title-default="Скопировать координаты" data-title-success="Скопировано">55.869778, 37.308418<img src="images/location-copy.svg" alt="" /></span></div>
                                     <div class="location-routes"><a href="#"><span>Проложить к нам маршрут</span><span>Закрыть маршрутизацию</span></a></div>
-                                    <div class="location-routes-mobile"><a href="https://yandex.ru/maps/?rtext=~55.876250,37.332268&rtt=auto" target="_blank"><span>Проложить к нам маршрут</span></a></div>
+                                    <div class="location-routes-mobile"><a href="https://yandex.ru/maps/?rtext=~55.869778,37.308418&rtt=auto" target="_blank"><span>Проложить к нам маршрут</span></a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <script async src="https://api-maps.yandex.ru/2.1/?apikey=6ea3cdde-80fe-4941-97a2-1df188f4d829&load=package.full&lang=ru-RU&onload=getYandexMap"></script>
+                <script async src="https://api-maps.yandex.ru/2.1.78/?apikey=e57c585d-ec7d-41bf-af46-c8d197dc63c8&load=package.full&lang=ru-RU&onload=getYandexMap"></script>
                 <script>
 
                     var myMap;
-                    var coords = [55.869390, 37.306631];
+                    var coords = [55.869778, 37.308418];
 
                     function getYandexMap() {
                         myMap = new ymaps.Map('map', {
@@ -163,6 +163,10 @@
                             iconImageOffset: [-84, -136]
                         });
                         myMap.geoObjects.add(myPlacemark);
+                        myPlacemark.events.add(['click'],  function(e) {
+                            $('.location-map-ctrl').trigger('click');
+                            $('.location-routes a').trigger('click');
+                        });
                         myMap.setCenter(coords);
 
                         var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
@@ -1617,9 +1621,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-01.jpg)">
                                         <a href="files/gallery-01.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-01.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1628,9 +1632,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-02.jpg)">
                                         <a href="files/gallery-02.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-02.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1639,9 +1643,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-03.jpg)">
                                         <a href="files/gallery-03.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-03.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1650,9 +1654,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-04.jpg)">
                                         <a href="files/gallery-04.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-04.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1661,9 +1665,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-05.jpg)">
                                         <a href="files/gallery-05.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-05.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1672,9 +1676,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-06.jpg)">
                                         <a href="files/gallery-06.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-06.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1683,9 +1687,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-07.jpg)">
                                         <a href="files/gallery-07.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-07.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1694,9 +1698,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-08.jpg)">
                                         <a href="files/gallery-08.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-08.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1710,9 +1714,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-05.jpg)">
                                         <a href="files/gallery-05.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-05.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1721,9 +1725,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-06.jpg)">
                                         <a href="files/gallery-06.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-06.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1732,9 +1736,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-07.jpg)">
                                         <a href="files/gallery-07.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-07.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1743,9 +1747,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-08.jpg)">
                                         <a href="files/gallery-08.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-08.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1754,9 +1758,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-01.jpg)">
                                         <a href="files/gallery-01.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-01.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1765,9 +1769,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-02.jpg)">
                                         <a href="files/gallery-02.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-02.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1776,9 +1780,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-03.jpg)">
                                         <a href="files/gallery-03.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-03.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1787,9 +1791,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-04.jpg)">
                                         <a href="files/gallery-04.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-04.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1803,9 +1807,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-03.jpg)">
                                         <a href="files/gallery-03.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-03.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1814,9 +1818,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-04.jpg)">
                                         <a href="files/gallery-04.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-04.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1825,9 +1829,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-01.jpg)">
                                         <a href="files/gallery-01.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-01.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1836,9 +1840,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-02.jpg)">
                                         <a href="files/gallery-02.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-02.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1847,9 +1851,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-05.jpg)">
                                         <a href="files/gallery-05.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-05.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1858,9 +1862,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-06.jpg)">
                                         <a href="files/gallery-06.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-06.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1869,9 +1873,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-07.jpg)">
                                         <a href="files/gallery-07.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-07.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1880,9 +1884,9 @@
                                     <div class="gallery-item-inner" style="background-image:url(files/gallery-08.jpg)">
                                         <a href="files/gallery-08.jpg" class="gallery-item-zoom"></a>
                                         <div class="gallery-item-social">
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
-                                            <div class="gallery-item-social-item"><a href="#"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-fb"><img src="images/gallery-social-fb.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="#" class="photo-social-item-vk"><img src="images/gallery-social-vk.svg" alt="" /></a></div>
+                                            <div class="gallery-item-social-item"><a href="https://www.instagram.com/" target="_blank"><img src="images/gallery-social-instagram.svg" alt="" /></a></div>
                                             <div class="gallery-item-social-item"><a href="files/gallery-08.jpg" download><img src="images/gallery-download.svg" alt="" /></a></div>
                                         </div>
                                     </div>
@@ -1954,7 +1958,7 @@
                     </div>
 
                     <div class="footer-logo"></div>
-                    <div class="footer-date">23.05.2020</div>
+                    <div class="footer-date">19.07.2021</div>
                 </div>
 
             </div>

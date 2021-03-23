@@ -30,7 +30,6 @@ strong, b {font-weight:600}
 
 header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; background:#fff; transition:transform 0.3s, box-shadow 0.3s}
 .header-fixed header {box-shadow:0px 4px 40px rgba(64, 64, 64, 0.15)}
-.header-fixed header.header-up {transform:translateY(-100%)}
 .header-inner {max-width:1160px; margin:0 auto}
 .header-inner::after {content:""; display:block; clear:both}
 
@@ -239,8 +238,13 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
 .location-phone {padding:0 0 0 20px; position:relative; margin:5px 0 0 0; font-weight:normal; font-size:15px; line-height:22px; color:#000; background:url(../images/location-phone.svg) no-repeat left center}
 .location-descr {margin:14px 0 0 0; color:#575757}
 .location-coords {margin:12px 0 0 0; font-weight:normal; font-size:13.5px; line-height:19px; color:#757575}
-.location-coords span {cursor:pointer}
-.location-coords span::after {content:""; display:inline-block; vertical-align:top; width:10px; height:12px; background:url(../images/location-copy.svg) no-repeat; margin:4px 0 0 20px}
+.location-coords span {cursor:pointer; position:relative}
+.location-coords span img {display:inline-block; vertical-align:top; width:10px; height:12px; margin:4px 0 0 20px}
+.location-coords span::after {content:""; display:block; position:absolute; right:5px; bottom:100%; visibility:hidden; opacity:0; margin-bottom:15px; transform:translateX(50%); transition:opacity 0.2s, margin-bottom 0.2s; width:0; height:0; border-top:5px solid #85558e; border-left:5px solid transparent; border-right:5px solid transparent}
+.location-coords span:hover::after {opacity:1; margin-bottom:5px; visibility:visible}
+.location-coords span::before {content:attr(data-title-default); display:block; position:absolute; right:5px; bottom:100%; visibility:hidden; opacity:0; margin-bottom:20px; transform:translateX(50%); transition:opacity 0.2s, margin-bottom 0.2s; background:#85558e; color:#fff; padding:2px 5px; white-space:nowrap}
+.location-coords span:hover::before {opacity:1; margin-bottom:10px; visibility:visible}
+.location-coords span.success::before {content:attr(data-title-success)}
 .location-routes {margin:15px 0 0 0; font-size:15px; line-height:22px}
 .location-routes a {color:#000; text-decoration:none}
 .location-routes a span {border-bottom:1px dashed #a54cb6; transition:all 0.2s}
@@ -269,7 +273,9 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
     .location-phone {padding:0 0 0 30px; font-size:18px; line-height:27px; background-size:18px 19px}
     .location-descr {margin:13px 0 0 0}
     .location-coords {margin:15px 0 0 0; font-size:18px; line-height:27px}
-    .location-coords span::after {width:20px; height:24px; background-size:100%}
+    .location-coords span img {width:20px; height:24px}
+    .location-coords span::after {right:10px}
+    .location-coords span::before {right:10px}
     .location-routes {display:none}
     .location-routes-mobile {display:block; margin:13px 0 0 0; font-size:19px; line-height:28px}
     .location-routes-mobile a::after {content:""; display:inline-block; vertical-align:middle; width:29px; height:8px; background:url(../images/location-routes.svg) no-repeat; margin:-4px 0 0 10px}
@@ -280,11 +286,17 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
 
 .location-map {position:absolute; left:0; top:0; right:0; bottom:0}
 
+.location-map .ymaps-2-1-78-control-popup-parent {transform-origin:right top; transform:scale(1.2)}
+.location-map .ymaps-2-1-78-routerPoints-pane .ymaps-2-1-78-placemark-overlay {display:none}
+.location-map .ymaps-2-1-78-routerPoints-pane .ymaps-2-1-78-placemark-overlay+.ymaps-2-1-78-placemark-overlay {display:block}
+
 .location-map-ctrl {display:none}
 .location-map-close {display:none}
 
 @media screen and (max-width:1159px) {
     .location-map {position:relative; left:auto; top:auto; right:auto; bottom:auto; height:812px}
+
+    .location-map .ymaps-2-1-78-control-popup-parent {transform:none}
 
     .location-map-open,
     .location-map-open body {overflow:hidden; position:fixed; left:0; top:0; right:0; bottom:0}
@@ -701,6 +713,7 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
 .team-list .slick-next {right:-12px; background-image:url(../images/team-next.svg); background-position:17px 13px}
 .team-list .slick-prev:hover,
 .team-list .slick-next:hover {background-color:#9a7fa8}
+.team-list .slick-disabled {visibility:hidden}
 
 @media screen and (max-width:1159px) {
     .team {padding:133px 20px 103px 20px}
