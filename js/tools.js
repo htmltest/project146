@@ -559,7 +559,28 @@ function getDaysText(number) {
     }
 }
 
+var timerScroll = null;
+
+function updateHistory() {
+    $('.nav-list li.active a').each(function() {
+        var curLink = $(this);
+        if (curLink.attr('href')[0] === '#') {
+            var curBlock = $(curLink.attr('href'));
+            if (curBlock.length == 1) {
+                if (typeof (history.pushState) !== undefined) {
+                    history.pushState(null, null, $(this).attr('href'));
+                }
+            }
+        }
+    });
+}
+
 $(window).on('load resize scroll', function() {
+    window.clearTimeout(timerScroll);
+    timerScroll = window.setTimeout(function() {
+        updateHistory();
+    }, 500);
+
     var curScroll = $(window).scrollTop();
     var curHeight = $('.nav').height();
     if (curScroll > 0) {
@@ -605,6 +626,15 @@ $(window).on('load resize scroll', function() {
     });
 
 });
+
+window.onpopstate = function(event) {
+    if (window.location.hash != '') {
+        var curBlock = $(window.location.hash);
+        if (curBlock.length == 1) {
+            $('html, body').animate({'scrollTop': curBlock.offset().top});
+        }
+    }
+}
 
 function initForm(curForm) {
     curForm.find('.form-input input, .form-input textarea').each(function() {

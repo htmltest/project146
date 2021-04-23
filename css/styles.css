@@ -669,13 +669,13 @@ header {position:fixed; left:0; top:0; right:0; height:62px; z-index:99; backgro
 @media screen and (max-width:1159px) {
     .wishes {padding:80px 0 0 0}
     .wishes-list {margin:64px 20px 0 20px}
-    .wishes-list-item {padding:0 0 25px 0}
+    .wishes-list-item {padding:0 0 25px 0; height:213px}
     .wishes-list-item-icon {height:103px; line-height:103px}
     .wishes-list-item-text {padding:0}
     .wishes-list-item:nth-child(3) {padding-top:0}
     .wishes-list-item:nth-child(4) {padding-top:0}
-    .wishes-list-item:nth-child(5) {padding-top:0}
-    .wishes-list-item:nth-child(6) {padding-top:0}
+    .wishes-list-item:nth-child(5) {padding-top:0; height:auto}
+    .wishes-list-item:nth-child(6) {padding-top:0; height:auto}
     .wishes-list-item-info {margin:0; max-width:none}
 }
 
