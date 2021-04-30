@@ -201,6 +201,9 @@ $(document).ready(function() {
     $('.guests-more-link a').click(function(e) {
         $('.guests').toggleClass('open');
         $('.guests-list-more').stop(true, true).slideToggle();
+        if (!$('.guests').hasClass('open')) {
+            $('html, body').animate({'scrollTop': $('.guests-list').offset().top - $('header').height()});
+        }
         e.preventDefault();
     });
 
